@@ -1,37 +1,40 @@
 <?php
-/* SVN FILE: $Id$ */
+/* SVN FILE: $Id: models.php 7690 2008-10-02 04:56:53Z nate $ */
 /**
- * Mock models file
+ * Mock models
  *
  * Mock classes for use in Model and related test cases
  *
  * PHP versions 4 and 5
  *
  * CakePHP(tm) Tests <https://trac.cakephp.org/wiki/Developement/TestSuite>
- * Copyright 2005-2008, Cake Software Foundation, Inc. (http://www.cakefoundation.org)
+ * Copyright 2005-2008, Cake Software Foundation, Inc.
+ *								1785 E. Sahara Avenue, Suite 490-204
+ *								Las Vegas, Nevada 89104
  *
  *  Licensed under The Open Group Test Suite License
  *  Redistributions of files must retain the above copyright notice.
  *
  * @filesource
- * @copyright     Copyright 2005-2008, Cake Software Foundation, Inc. (http://www.cakefoundation.org)
- * @link          https://trac.cakephp.org/wiki/Developement/TestSuite CakePHP(tm) Tests
- * @package       cake
- * @subpackage    cake.tests.cases.libs.model
- * @since         CakePHP(tm) v 1.2.0.6464
- * @version       $Revision$
- * @modifiedby    $LastChangedBy$
- * @lastmodified  $Date$
- * @license       http://www.opensource.org/licenses/opengroup.php The Open Group Test Suite License
+ * @copyright		Copyright 2005-2008, Cake Software Foundation, Inc.
+ * @link				https://trac.cakephp.org/wiki/Developement/TestSuite CakePHP(tm) Tests
+ * @package			cake.tests
+ * @subpackage		cake.tests.cases.libs.model
+ * @since			CakePHP(tm) v 1.2.0.6464
+ * @version			$Revision: 7690 $
+ * @modifiedby		$LastChangedBy: nate $
+ * @lastmodified	$Date: 2008-10-02 00:56:53 -0400 (Thu, 02 Oct 2008) $
+ * @license			http://www.opensource.org/licenses/opengroup.php The Open Group Test Suite License
  */
 if (!defined('CAKEPHP_UNIT_TEST_EXECUTION')) {
 	define('CAKEPHP_UNIT_TEST_EXECUTION', 1);
 }
+
 /**
  * Test class
  *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.model
+ * @package		cake.tests
+ * @subpackage	cake.tests.cases.libs.model
  */
 class Test extends CakeTestModel {
 /**
@@ -66,8 +69,8 @@ class Test extends CakeTestModel {
 /**
  * TestAlias class
  *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.model
+ * @package		cake.tests
+ * @subpackage	cake.tests.cases.libs.model
  */
 class TestAlias extends CakeTestModel {
 /**
@@ -109,8 +112,8 @@ class TestAlias extends CakeTestModel {
 /**
  * TestValidate class
  *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.model
+ * @package		cake.tests
+ * @subpackage	cake.tests.cases.libs.model
  */
 class TestValidate extends CakeTestModel {
 /**
@@ -168,8 +171,8 @@ class TestValidate extends CakeTestModel {
 /**
  * User class
  *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.model
+ * @package		cake.tests
+ * @subpackage	cake.tests.cases.libs.model
  */
 class User extends CakeTestModel {
 /**
@@ -185,13 +188,13 @@ class User extends CakeTestModel {
  * @var array
  * @access public
  */
-	var $validate = array('user' => 'notEmpty', 'password' => 'notEmpty');
+	var $validate = array('user' => VALID_NOT_EMPTY, 'password' => VALID_NOT_EMPTY);
 }
 /**
  * Article class
  *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.model
+ * @package		cake.tests
+ * @subpackage	cake.tests.cases.libs.model
  */
 class Article extends CakeTestModel {
 /**
@@ -228,7 +231,7 @@ class Article extends CakeTestModel {
  * @var array
  * @access public
  */
-	var $validate = array('user_id' => 'numeric', 'title' => array('allowEmpty' => false, 'rule' => 'notEmpty'), 'body' => 'notEmpty');
+	var $validate = array('user_id' => VALID_NUMBER, 'title' => array('allowEmpty' => false, 'rule' => VALID_NOT_EMPTY), 'body' => VALID_NOT_EMPTY);
 /**
  * beforeSaveReturn property
  *
@@ -262,8 +265,8 @@ class Article extends CakeTestModel {
 /**
  * NumericArticle class
  *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.model
+ * @package		cake.tests
+ * @subpackage	cake.tests.cases.libs.model
  */
 class NumericArticle extends CakeTestModel {
 /**
@@ -284,8 +287,8 @@ class NumericArticle extends CakeTestModel {
 /**
  * Article10 class
  *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.model
+ * @package		cake.tests
+ * @subpackage	cake.tests.cases.libs.model
  */
 class Article10 extends CakeTestModel {
 /**
@@ -313,8 +316,8 @@ class Article10 extends CakeTestModel {
 /**
  * ArticleFeatured class
  *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.model
+ * @package		cake.tests
+ * @subpackage	cake.tests.cases.libs.model
  */
 class ArticleFeatured extends CakeTestModel {
 /**
@@ -358,13 +361,13 @@ class ArticleFeatured extends CakeTestModel {
  * @var array
  * @access public
  */
-	var $validate = array('user_id' => 'numeric', 'title' => 'notEmpty', 'body' => 'notEmpty');
+	var $validate = array('user_id' => VALID_NUMBER, 'title' => VALID_NOT_EMPTY, 'body' => VALID_NOT_EMPTY);
 }
 /**
  * Featured class
  *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.model
+ * @package		cake.tests
+ * @subpackage	cake.tests.cases.libs.model
  */
 class Featured extends CakeTestModel {
 /**
@@ -385,8 +388,8 @@ class Featured extends CakeTestModel {
 /**
  * Tag class
  *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.model
+ * @package		cake.tests
+ * @subpackage	cake.tests.cases.libs.model
  */
 class Tag extends CakeTestModel {
 /**
@@ -400,8 +403,8 @@ class Tag extends CakeTestModel {
 /**
  * ArticlesTag class
  *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.model
+ * @package		cake.tests
+ * @subpackage	cake.tests.cases.libs.model
  */
 class ArticlesTag extends CakeTestModel {
 /**
@@ -415,8 +418,8 @@ class ArticlesTag extends CakeTestModel {
 /**
  * ArticleFeaturedsTag class
  *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.model
+ * @package		cake.tests
+ * @subpackage	cake.tests.cases.libs.model
  */
 class ArticleFeaturedsTag extends CakeTestModel {
 /**
@@ -430,8 +433,8 @@ class ArticleFeaturedsTag extends CakeTestModel {
 /**
  * Comment class
  *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.model
+ * @package		cake.tests
+ * @subpackage	cake.tests.cases.libs.model
  */
 class Comment extends CakeTestModel {
 /**
@@ -459,8 +462,8 @@ class Comment extends CakeTestModel {
 /**
  * Modified Comment Class has afterFind Callback
  *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.model
+ * @package		cake.tests
+ * @subpackage	cake.tests.cases.libs.model
  */
 class ModifiedComment extends CakeTestModel {
 /**
@@ -496,74 +499,11 @@ class ModifiedComment extends CakeTestModel {
 		return $results;
 	}
 }
-
-/**
- * MergeVarPluginAppModel class
- *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.model
- */
-class MergeVarPluginAppModel extends AppModel {
-/**
- * actsAs parameter
- *
- * @var array
- */
-	var $actsAs = array(
-		'Containable'
-	);
-}
-/**
- * MergeVarPluginPost class
- *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.model
- */
-class MergeVarPluginPost extends MergeVarPluginAppModel {
-/**
- * actsAs parameter
- *
- * @var array
- */
-	var $actsAs = array(
-		'Tree'
-	);
-/**
- * useTable parameter
- *
- * @var string
- */
-	var $useTable = 'posts';
-}
-/**
- * MergeVarPluginComment class
- *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.model
- */
-class MergeVarPluginComment extends MergeVarPluginAppModel {
-/**
- * actsAs parameter
- *
- * @var array
- */
-	var $actsAs = array(
-		'Containable' => array('some_settings')
-	);
-/**
- * useTable parameter
- *
- * @var string
- */
-	var $useTable = 'comments';
-}
-
-
 /**
  * Attachment class
  *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.model
+ * @package		cake.tests
+ * @subpackage	cake.tests.cases.libs.model
  */
 class Attachment extends CakeTestModel {
 /**
@@ -577,8 +517,8 @@ class Attachment extends CakeTestModel {
 /**
  * Category class
  *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.model
+ * @package		cake.tests
+ * @subpackage	cake.tests.cases.libs.model
  */
 class Category extends CakeTestModel {
 /**
@@ -592,8 +532,8 @@ class Category extends CakeTestModel {
 /**
  * CategoryThread class
  *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.model
+ * @package		cake.tests
+ * @subpackage	cake.tests.cases.libs.model
  */
 class CategoryThread extends CakeTestModel {
 /**
@@ -614,8 +554,8 @@ class CategoryThread extends CakeTestModel {
 /**
  * Apple class
  *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.model
+ * @package		cake.tests
+ * @subpackage	cake.tests.cases.libs.model
  */
 class Apple extends CakeTestModel {
 /**
@@ -631,7 +571,7 @@ class Apple extends CakeTestModel {
  * @var array
  * @access public
  */
-	var $validate = array('name' => 'notEmpty');
+	var $validate = array('name' => VALID_NOT_EMPTY);
 /**
  * hasOne property
  *
@@ -657,8 +597,8 @@ class Apple extends CakeTestModel {
 /**
  * Sample class
  *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.model
+ * @package		cake.tests
+ * @subpackage	cake.tests.cases.libs.model
  */
 class Sample extends CakeTestModel {
 /**
@@ -679,8 +619,8 @@ class Sample extends CakeTestModel {
 /**
  * AnotherArticle class
  *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.model
+ * @package		cake.tests
+ * @subpackage	cake.tests.cases.libs.model
  */
 class AnotherArticle extends CakeTestModel {
 /**
@@ -701,8 +641,8 @@ class AnotherArticle extends CakeTestModel {
 /**
  * Advertisement class
  *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.model
+ * @package		cake.tests
+ * @subpackage	cake.tests.cases.libs.model
  */
 class Advertisement extends CakeTestModel {
 /**
@@ -723,8 +663,8 @@ class Advertisement extends CakeTestModel {
 /**
  * Home class
  *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.model
+ * @package		cake.tests
+ * @subpackage	cake.tests.cases.libs.model
  */
 class Home extends CakeTestModel {
 /**
@@ -745,8 +685,8 @@ class Home extends CakeTestModel {
 /**
  * Post class
  *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.model
+ * @package		cake.tests
+ * @subpackage	cake.tests.cases.libs.model
  */
 class Post extends CakeTestModel {
 /**
@@ -767,8 +707,8 @@ class Post extends CakeTestModel {
 /**
  * Author class
  *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.model
+ * @package		cake.tests
+ * @subpackage	cake.tests.cases.libs.model
  */
 class Author extends CakeTestModel {
 /**
@@ -800,8 +740,8 @@ class Author extends CakeTestModel {
 /**
  * ModifiedAuthor class
  *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.model
+ * @package		cake.tests
+ * @subpackage	cake.tests.cases.libs.model
  */
 class ModifiedAuthor extends Author {
 /**
@@ -828,8 +768,8 @@ class ModifiedAuthor extends Author {
 /**
  * Project class
  *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.model
+ * @package		cake.tests
+ * @subpackage	cake.tests.cases.libs.model
  */
 class Project extends CakeTestModel {
 /**
@@ -850,8 +790,8 @@ class Project extends CakeTestModel {
 /**
  * Thread class
  *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.model
+ * @package		cake.tests
+ * @subpackage	cake.tests.cases.libs.model
  */
 class Thread extends CakeTestModel {
 /**
@@ -879,8 +819,8 @@ class Thread extends CakeTestModel {
 /**
  * Message class
  *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.model
+ * @package		cake.tests
+ * @subpackage	cake.tests.cases.libs.model
  */
 class Message extends CakeTestModel {
 /**
@@ -901,8 +841,8 @@ class Message extends CakeTestModel {
 /**
  * Bid class
  *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.model
+ * @package		cake.tests
+ * @subpackage	cake.tests.cases.libs.model
  */
 class Bid extends CakeTestModel {
 /**
@@ -923,8 +863,8 @@ class Bid extends CakeTestModel {
 /**
  * NodeAfterFind class
  *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.model
+ * @package		cake.tests
+ * @subpackage	cake.tests.cases.libs.model
  */
 class NodeAfterFind extends CakeTestModel {
 /**
@@ -940,7 +880,7 @@ class NodeAfterFind extends CakeTestModel {
  * @var array
  * @access public
  */
-	var $validate = array('name' => 'notEmpty');
+	var $validate = array('name' => VALID_NOT_EMPTY);
 /**
  * useTable property
  *
@@ -983,8 +923,8 @@ class NodeAfterFind extends CakeTestModel {
 /**
  * NodeAfterFindSample class
  *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.model
+ * @package		cake.tests
+ * @subpackage	cake.tests.cases.libs.model
  */
 class NodeAfterFindSample extends CakeTestModel {
 /**
@@ -1012,8 +952,8 @@ class NodeAfterFindSample extends CakeTestModel {
 /**
  * NodeNoAfterFind class
  *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.model
+ * @package		cake.tests
+ * @subpackage	cake.tests.cases.libs.model
  */
 class NodeNoAfterFind extends CakeTestModel {
 /**
@@ -1029,7 +969,7 @@ class NodeNoAfterFind extends CakeTestModel {
  * @var array
  * @access public
  */
-	var $validate = array('name' => 'notEmpty');
+	var $validate = array('name' => VALID_NOT_EMPTY);
 /**
  * useTable property
  *
@@ -1062,8 +1002,8 @@ class NodeNoAfterFind extends CakeTestModel {
 /**
  * Node class
  *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.model
+ * @package		cake.tests
+ * @subpackage	cake.tests.cases.libs.model
  */
 class Node extends CakeTestModel{
 /**
@@ -1083,7 +1023,6 @@ class Node extends CakeTestModel{
 		'ParentNode' => array(
 			'className' => 'Node',
 			'joinTable' => 'dependency',
-			'with' => 'Dependency',
 			'foreignKey' => 'child_id',
 			'associationForeignKey' => 'parent_id',
 		)
@@ -1092,8 +1031,8 @@ class Node extends CakeTestModel{
 /**
  * Dependency class
  *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.model
+ * @package		cake.tests
+ * @subpackage	cake.tests.cases.libs.model
  */
 class Dependency extends CakeTestModel {
 /**
@@ -1107,8 +1046,8 @@ class Dependency extends CakeTestModel {
 /**
  * ModelA class
  *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.model
+ * @package		cake.tests
+ * @subpackage	cake.tests.cases.libs.model
  */
 class ModelA extends CakeTestModel {
 /**
@@ -1136,8 +1075,8 @@ class ModelA extends CakeTestModel {
 /**
  * ModelB class
  *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.model
+ * @package		cake.tests
+ * @subpackage	cake.tests.cases.libs.model
  */
 class ModelB extends CakeTestModel {
 /**
@@ -1165,8 +1104,8 @@ class ModelB extends CakeTestModel {
 /**
  * ModelC class
  *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.model
+ * @package		cake.tests
+ * @subpackage	cake.tests.cases.libs.model
  */
 class ModelC extends CakeTestModel {
 /**
@@ -1194,8 +1133,8 @@ class ModelC extends CakeTestModel {
 /**
  * ModelD class
  *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.model
+ * @package		cake.tests
+ * @subpackage	cake.tests.cases.libs.model
  */
 class ModelD extends CakeTestModel {
 /**
@@ -1216,8 +1155,8 @@ class ModelD extends CakeTestModel {
 /**
  * Something class
  *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.model
+ * @package		cake.tests
+ * @subpackage	cake.tests.cases.libs.model
  */
 class Something extends CakeTestModel {
 /**
@@ -1238,8 +1177,8 @@ class Something extends CakeTestModel {
 /**
  * SomethingElse class
  *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.model
+ * @package		cake.tests
+ * @subpackage	cake.tests.cases.libs.model
  */
 class SomethingElse extends CakeTestModel {
 /**
@@ -1260,8 +1199,8 @@ class SomethingElse extends CakeTestModel {
 /**
  * JoinThing class
  *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.model
+ * @package		cake.tests
+ * @subpackage	cake.tests.cases.libs.model
  */
 class JoinThing extends CakeTestModel {
 /**
@@ -1282,8 +1221,8 @@ class JoinThing extends CakeTestModel {
 /**
  * Portfolio class
  *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.model
+ * @package		cake.tests
+ * @subpackage	cake.tests.cases.libs.model
  */
 class Portfolio extends CakeTestModel {
 /**
@@ -1304,8 +1243,8 @@ class Portfolio extends CakeTestModel {
 /**
  * Item class
  *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.model
+ * @package		cake.tests
+ * @subpackage	cake.tests.cases.libs.model
  */
 class Item extends CakeTestModel {
 /**
@@ -1333,8 +1272,8 @@ class Item extends CakeTestModel {
 /**
  * ItemsPortfolio class
  *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.model
+ * @package		cake.tests
+ * @subpackage	cake.tests.cases.libs.model
  */
 class ItemsPortfolio extends CakeTestModel {
 /**
@@ -1348,8 +1287,8 @@ class ItemsPortfolio extends CakeTestModel {
 /**
  * Syfile class
  *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.model
+ * @package		cake.tests
+ * @subpackage	cake.tests.cases.libs.model
  */
 class Syfile extends CakeTestModel {
 /**
@@ -1370,8 +1309,8 @@ class Syfile extends CakeTestModel {
 /**
  * Image class
  *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.model
+ * @package		cake.tests
+ * @subpackage	cake.tests.cases.libs.model
  */
 class Image extends CakeTestModel {
 /**
@@ -1385,8 +1324,8 @@ class Image extends CakeTestModel {
 /**
  * DeviceType class
  *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.model
+ * @package		cake.tests
+ * @subpackage	cake.tests.cases.libs.model
  */
 class DeviceType extends CakeTestModel {
 /**
@@ -1425,8 +1364,8 @@ class DeviceType extends CakeTestModel {
 /**
  * DeviceTypeCategory class
  *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.model
+ * @package		cake.tests
+ * @subpackage	cake.tests.cases.libs.model
  */
 class DeviceTypeCategory extends CakeTestModel {
 /**
@@ -1440,8 +1379,8 @@ class DeviceTypeCategory extends CakeTestModel {
 /**
  * FeatureSet class
  *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.model
+ * @package		cake.tests
+ * @subpackage	cake.tests.cases.libs.model
  */
 class FeatureSet extends CakeTestModel {
 /**
@@ -1455,8 +1394,8 @@ class FeatureSet extends CakeTestModel {
 /**
  * ExteriorTypeCategory class
  *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.model
+ * @package		cake.tests
+ * @subpackage	cake.tests.cases.libs.model
  */
 class ExteriorTypeCategory extends CakeTestModel {
 /**
@@ -1477,8 +1416,8 @@ class ExteriorTypeCategory extends CakeTestModel {
 /**
  * Document class
  *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.model
+ * @package		cake.tests
+ * @subpackage	cake.tests.cases.libs.model
  */
 class Document extends CakeTestModel {
 /**
@@ -1499,8 +1438,8 @@ class Document extends CakeTestModel {
 /**
  * Device class
  *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.model
+ * @package		cake.tests
+ * @subpackage	cake.tests.cases.libs.model
  */
 class Device extends CakeTestModel {
 /**
@@ -1514,8 +1453,8 @@ class Device extends CakeTestModel {
 /**
  * DocumentDirectory class
  *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.model
+ * @package		cake.tests
+ * @subpackage	cake.tests.cases.libs.model
  */
 class DocumentDirectory extends CakeTestModel {
 /**
@@ -1529,8 +1468,8 @@ class DocumentDirectory extends CakeTestModel {
 /**
  * PrimaryModel class
  *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.model
+ * @package		cake.tests
+ * @subpackage	cake.tests.cases.libs.model
  */
 class PrimaryModel extends CakeTestModel {
 /**
@@ -1544,8 +1483,8 @@ class PrimaryModel extends CakeTestModel {
 /**
  * SecondaryModel class
  *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.model
+ * @package		cake.tests
+ * @subpackage	cake.tests.cases.libs.model
  */
 class SecondaryModel extends CakeTestModel {
 /**
@@ -1559,8 +1498,8 @@ class SecondaryModel extends CakeTestModel {
 /**
  * JoinA class
  *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.model
+ * @package		cake.tests
+ * @subpackage	cake.tests.cases.libs.model
  */
 class JoinA extends CakeTestModel {
 /**
@@ -1581,8 +1520,8 @@ class JoinA extends CakeTestModel {
 /**
  * JoinB class
  *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.model
+ * @package		cake.tests
+ * @subpackage	cake.tests.cases.libs.model
  */
 class JoinB extends CakeTestModel {
 /**
@@ -1603,8 +1542,8 @@ class JoinB extends CakeTestModel {
 /**
  * JoinC class
  *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.model
+ * @package		cake.tests
+ * @subpackage	cake.tests.cases.libs.model
  */
 class JoinC extends CakeTestModel {
 /**
@@ -1625,8 +1564,8 @@ class JoinC extends CakeTestModel {
 /**
  * ThePaper class
  *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.model
+ * @package		cake.tests
+ * @subpackage	cake.tests.cases.libs.model
  */
 class ThePaper extends CakeTestModel {
 /**
@@ -1656,13 +1595,13 @@ class ThePaper extends CakeTestModel {
  * @var array
  * @access public
  */
-	var $hasAndBelongsToMany = array('Monkey' => array('joinTable' => 'the_paper_monkies', 'order' => 'id'));
+	var $hasAndBelongsToMany = array('Monkey' => array('joinTable' => 'the_paper_monkies'));
 }
 /**
  * Monkey class
  *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.model
+ * @package		cake.tests
+ * @subpackage	cake.tests.cases.libs.model
  */
 class Monkey extends CakeTestModel {
 /**
@@ -1683,8 +1622,8 @@ class Monkey extends CakeTestModel {
 /**
  * AssociationTest1 class
  *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.model
+ * @package		cake.tests
+ * @subpackage	cake.tests.cases.libs.model
  */
 class AssociationTest1 extends CakeTestModel {
 /**
@@ -1714,8 +1653,8 @@ class AssociationTest1 extends CakeTestModel {
 /**
  * AssociationTest2 class
  *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.model
+ * @package		cake.tests
+ * @subpackage	cake.tests.cases.libs.model
  */
 class AssociationTest2 extends CakeTestModel {
 /**
@@ -1745,8 +1684,8 @@ class AssociationTest2 extends CakeTestModel {
 /**
  * Callback class
  *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.model
+ * @package		cake.tests
+ * @subpackage	cake.tests.cases.libs.model
  */
 class Callback extends CakeTestModel {
 	//
@@ -1754,8 +1693,8 @@ class Callback extends CakeTestModel {
 /**
  * Uuid class
  *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.model
+ * @package		cake.tests
+ * @subpackage	cake.tests.cases.libs.model
  */
 class Uuid extends CakeTestModel {
 /**
@@ -1769,8 +1708,8 @@ class Uuid extends CakeTestModel {
 /**
  * DataTest class
  *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.model
+ * @package		cake.tests
+ * @subpackage	cake.tests.cases.libs.model
  */
 class DataTest extends CakeTestModel {
 /**
@@ -1784,8 +1723,8 @@ class DataTest extends CakeTestModel {
 /**
  * TheVoid class
  *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.model
+ * @package		cake.tests
+ * @subpackage	cake.tests.cases.libs.model
  */
 class TheVoid extends CakeTestModel {
 /**
@@ -1804,19 +1743,19 @@ class TheVoid extends CakeTestModel {
 	var $useTable = false;
 }
 /**
- * ValidationTest1 class
+ * ValidationTest class
  *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.model
+ * @package		cake.tests
+ * @subpackage	cake.tests.cases.libs.model
  */
-class ValidationTest1 extends CakeTestModel {
+class ValidationTest extends CakeTestModel {
 /**
  * name property
  *
  * @var string 'ValidationTest'
  * @access public
  */
-	var $name = 'ValidationTest1';
+	var $name = 'ValidationTest';
 /**
  * useTable property
  *
@@ -1838,10 +1777,10 @@ class ValidationTest1 extends CakeTestModel {
  * @access public
  */
 	var $validate = array(
-		'title' => 'notEmpty',
+		'title' => VALID_NOT_EMPTY,
 		'published' => 'customValidationMethod',
 		'body' => array(
-			'notEmpty',
+			VALID_NOT_EMPTY,
 			'/^.{5,}$/s' => 'no matchy',
 			'/^[0-9A-Za-z \\.]{1,}$/s'
 		)
@@ -1879,8 +1818,8 @@ class ValidationTest1 extends CakeTestModel {
 /**
  * ValidationTest2 class
  *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.model
+ * @package		cake.tests
+ * @subpackage	cake.tests.cases.libs.model
  */
 class ValidationTest2 extends CakeTestModel {
 /**
@@ -1904,10 +1843,10 @@ class ValidationTest2 extends CakeTestModel {
  * @access public
  */
 	var $validate = array(
-		'title' => 'notEmpty',
+		'title' => VALID_NOT_EMPTY,
 		'published' => 'customValidationMethod',
 		'body' => array(
-			'notEmpty',
+			VALID_NOT_EMPTY,
 			'/^.{5,}$/s' => 'no matchy',
 			'/^[0-9A-Za-z \\.]{1,}$/s'
 		)
@@ -1935,8 +1874,8 @@ class ValidationTest2 extends CakeTestModel {
 /**
  * Person class
  *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.model
+ * @package		cake.tests
+ * @subpackage	cake.tests.cases.libs.model
  */
 class Person extends CakeTestModel {
 /**
@@ -1963,8 +1902,8 @@ class Person extends CakeTestModel {
 /**
  * UnderscoreField class
  *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.model
+ * @package		cake.tests
+ * @subpackage	cake.tests.cases.libs.model
  */
 class UnderscoreField extends CakeTestModel {
 /**
@@ -1978,8 +1917,8 @@ class UnderscoreField extends CakeTestModel {
 /**
  * Product class
  *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.model
+ * @package		cake.tests
+ * @subpackage	cake.tests.cases.libs.model
  */
 class Product extends CakeTestModel {
 /**
@@ -1993,8 +1932,8 @@ class Product extends CakeTestModel {
 /**
  * Story class
  *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.model
+ * @package		cake.tests
+ * @subpackage	cake.tests.cases.libs.model
  */
 class Story extends CakeTestModel {
 /**
@@ -2024,13 +1963,13 @@ class Story extends CakeTestModel {
  * @var array
  * @access public
  */
-	var $validate = array('title' => 'notEmpty');
+	var $validate = array('title' => VALID_NOT_EMPTY);
 }
 /**
  * Cd class
  *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.model
+ * @package		cake.tests
+ * @subpackage	cake.tests.cases.libs.model
  */
 class Cd extends CakeTestModel {
 /**
@@ -2051,8 +1990,8 @@ class Cd extends CakeTestModel {
 /**
  * Book class
  *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.model
+ * @package		cake.tests
+ * @subpackage	cake.tests.cases.libs.model
  */
 class Book extends CakeTestModel {
 /**
@@ -2073,8 +2012,8 @@ class Book extends CakeTestModel {
 /**
  * OverallFavorite class
  *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.model
+ * @package		cake.tests
+ * @subpackage	cake.tests.cases.libs.model
  */
 class OverallFavorite extends CakeTestModel {
 /**
@@ -2088,8 +2027,8 @@ class OverallFavorite extends CakeTestModel {
 /**
  * MyUser class
  *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.model
+ * @package		cake.tests
+ * @subpackage	cake.tests.cases.libs.model
  */
 class MyUser extends CakeTestModel {
 /**
@@ -2110,8 +2049,8 @@ class MyUser extends CakeTestModel {
 /**
  * MyCategory class
  *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.model
+ * @package		cake.tests
+ * @subpackage	cake.tests.cases.libs.model
  */
 class MyCategory extends CakeTestModel {
 /**
@@ -2132,8 +2071,8 @@ class MyCategory extends CakeTestModel {
 /**
  * MyProduct class
  *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.model
+ * @package		cake.tests
+ * @subpackage	cake.tests.cases.libs.model
  */
 class MyProduct extends CakeTestModel {
 /**
@@ -2154,8 +2093,8 @@ class MyProduct extends CakeTestModel {
 /**
  * MyCategoriesMyUser class
  *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.model
+ * @package		cake.tests
+ * @subpackage	cake.tests.cases.libs.model
  */
 class MyCategoriesMyUser extends CakeTestModel {
 /**
@@ -2169,8 +2108,8 @@ class MyCategoriesMyUser extends CakeTestModel {
 /**
  * MyCategoriesMyProduct class
  *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.model
+ * @package		cake.tests
+ * @subpackage	cake.tests.cases.libs.model
  */
 class MyCategoriesMyProduct extends CakeTestModel {
 /**
@@ -2184,8 +2123,8 @@ class MyCategoriesMyProduct extends CakeTestModel {
 /**
  * I18nModel class
  *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.model
+ * @package		cake.tests
+ * @subpackage	cake.tests.cases.libs.model
  */
 class I18nModel extends CakeTestModel {
 /**
@@ -2213,8 +2152,8 @@ class I18nModel extends CakeTestModel {
 /**
  * NumberTree class
  *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.model
+ * @package		cake.tests
+ * @subpackage	cake.tests.cases.libs.model
  */
 class NumberTree extends CakeTestModel {
 /**
@@ -2245,8 +2184,7 @@ class NumberTree extends CakeTestModel {
  */
 	function initialize($levelLimit = 3, $childLimit = 3, $currentLevel = null, $parent_id = null, $prefix = '1', $hierachial = true) {
 		if (!$parent_id) {
-			$db =& ConnectionManager::getDataSource($this->useDbConfig);
-			$db->truncate($this->table);
+			$this->deleteAll(true);
 			$this->save(array($this->name => array('name' => '1. Root')));
 			$this->initialize($levelLimit, $childLimit, 1, $this->id, '1', $hierachial);
 			$this->create(array());
@@ -2262,11 +2200,7 @@ class NumberTree extends CakeTestModel {
 			$this->create($data);
 
 			if ($hierachial) {
-				if ($this->name == 'UnconventionalTree') {
-					$data[$this->name]['join'] = $parent_id;
-				} else {
-					$data[$this->name]['parent_id'] = $parent_id;
-				}
+				$data[$this->name]['parent_id'] = $parent_id;
 			}
 			$this->save($data);
 			$this->initialize($levelLimit, $childLimit, $currentLevel + 1, $this->id, $name, $hierachial);
@@ -2276,8 +2210,8 @@ class NumberTree extends CakeTestModel {
 /**
  * FlagTree class
  *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.model
+ * @package		cake.tests
+ * @subpackage	cake.tests.cases.libs.model
  */
 class FlagTree extends NumberTree {
 /**
@@ -2289,48 +2223,10 @@ class FlagTree extends NumberTree {
 	var $name = 'FlagTree';
 }
 /**
- * UnconventionalTree class
- *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.model
- */
-class UnconventionalTree extends NumberTree {
-/**
- * name property
- *
- * @var string 'FlagTree'
- * @access public
- */
-	var $name = 'UnconventionalTree';
-	var $actsAs = array(
-		'Tree' => array(
-			'parent' => 'join',
-			'left'  => 'left',
-			'right' => 'right'
-		)
-	);
-}
-/**
- * UuidTree class
- *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.model
- */
-class UuidTree extends NumberTree {
-/**
- * name property
- *
- * @var string 'FlagTree'
- * @access public
- */
-	var $name = 'UuidTree';
-}
-
-/**
  * Campaign class
  *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.model
+ * @package		cake.tests
+ * @subpackage	cake.tests.cases.libs.model
  */
 class Campaign extends CakeTestModel {
 /**
@@ -2351,8 +2247,8 @@ class Campaign extends CakeTestModel {
 /**
  * Ad class
  *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.model
+ * @package		cake.tests
+ * @subpackage	cake.tests.cases.libs.model
  */
 class Ad extends CakeTestModel {
 /**
@@ -2380,10 +2276,10 @@ class Ad extends CakeTestModel {
 /**
  * AfterTree class
  *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.model
+ * @package		cake.tests
+ * @subpackage	cake.tests.cases.libs.model
  */
-class AfterTree extends NumberTree {
+class AfterTree extends CakeTestModel {
 /**
  * name property
  *
@@ -2408,8 +2304,8 @@ class AfterTree extends NumberTree {
 /**
  * Nonconformant Content class
  *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.model
+ * @package		cake.tests
+ * @subpackage	cake.tests.cases.libs.model
  */
 class Content extends CakeTestModel {
 /**
@@ -2439,13 +2335,13 @@ class Content extends CakeTestModel {
  * @var array
  * @access public
  */
-	var $hasAndBelongsToMany = array('Account' => array('className' => 'Account', 'with' => 'ContentAccount', 'joinTable' => 'ContentAccounts', 'foreignKey' => 'iContentId', 'associationForeignKey', 'iAccountId'));
+	var $hasAndBelongsToMany = array('Account' => array('className' => 'Account', 'joinTable' => 'ContentAccounts', 'foreignKey' => 'iContentId', 'associationForeignKey', 'iAccountId'));
 }
 /**
  * Nonconformant Account class
  *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.model
+ * @package		cake.tests
+ * @subpackage	cake.tests.cases.libs.model
  */
 class Account extends CakeTestModel {
 /**
@@ -2473,8 +2369,8 @@ class Account extends CakeTestModel {
 /**
  * Nonconformant ContentAccount class
  *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.model
+ * @package		cake.tests
+ * @subpackage	cake.tests.cases.libs.model
  */
 class ContentAccount extends CakeTestModel {
 /**
@@ -2502,8 +2398,8 @@ class ContentAccount extends CakeTestModel {
 /**
  * FilmFile class
  *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.model
+ * @package		cake.tests
+ * @subpackage	cake.tests.cases.libs.model
  */
 class FilmFile extends CakeTestModel {
 	var $name = 'FilmFile';
@@ -2511,8 +2407,8 @@ class FilmFile extends CakeTestModel {
 /**
  * Basket test model
  *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.model
+ * @package		cake.tests
+ * @subpackage	cake.tests.cases.libs.model
  */
 class Basket extends CakeTestModel {
 	var $name = 'Basket';
@@ -2530,8 +2426,8 @@ class Basket extends CakeTestModel {
 /**
  * TestPluginArticle class
  *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.model
+ * @package		cake.tests
+ * @subpackage	cake.tests.cases.libs.model
  */
 class TestPluginArticle extends CakeTestModel {
 /**
@@ -2565,8 +2461,8 @@ class TestPluginArticle extends CakeTestModel {
 /**
  * TestPluginComment class
  *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.model
+ * @package		cake.tests
+ * @subpackage	cake.tests.cases.libs.model
  */
 class TestPluginComment extends CakeTestModel {
 /**
@@ -2590,405 +2486,4 @@ class TestPluginComment extends CakeTestModel {
 		'User'
 	);
 }
-/**
- * Uuidportfolio class
- *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.model
- */
-class Uuidportfolio extends CakeTestModel {
-/**
- * name property
- *
- * @var string 'Uuidportfolio'
- * @access public
- */
-	var $name = 'Uuidportfolio';
-/**
- * hasAndBelongsToMany property
- *
- * @var array
- * @access public
- */
-	var $hasAndBelongsToMany = array('Uuiditem');
-}
-/**
- * Uuiditem class
- *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.model
- */
-class Uuiditem extends CakeTestModel {
-/**
- * name property
- *
- * @var string 'Item'
- * @access public
- */
-	var $name = 'Uuiditem';
-/**
- * hasAndBelongsToMany property
- *
- * @var array
- * @access public
- */
-	//var $hasAndBelongsToMany = array('Uuidportfolio' => array('unique' => true));
-//	var $hasAndBelongsToMany = array('Uuidportfolio' => array('with' => 'UuiditemsUuidportfolio'));
-	var $hasAndBelongsToMany = array('Uuidportfolio' => array('with' => 'UuiditemsUuidportfolioNumericid'));
-
-}
-/**
- * UuiditemsPortfolio class
- *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.model
- */
-class UuiditemsUuidportfolio extends CakeTestModel {
-/**
- * name property
- *
- * @var string 'ItemsPortfolio'
- * @access public
- */
-	var $name = 'UuiditemsUuidportfolio';
-}
-/**
- * UuiditemsPortfolioNumericid class
- *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.model
- */
-class UuiditemsUuidportfolioNumericid extends CakeTestModel {
-/**
- * name property
- *
- * @var string
- * @access public
- */
-	var $name = 'UuiditemsUuidportfolioNumericid';
-}
-/**
- * TranslateTestModel class.
- *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.model
- */
-class TranslateTestModel extends CakeTestModel {
-/**
- * name property
- *
- * @var string 'TranslateTestModel'
- * @access public
- */
-	var $name = 'TranslateTestModel';
-/**
- * useTable property
- *
- * @var string 'i18n'
- * @access public
- */
-	var $useTable = 'i18n';
-/**
- * displayField property
- *
- * @var string 'field'
- * @access public
- */
-	var $displayField = 'field';
-}
-/**
- * TranslatedItem class.
- *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.model
- */
-class TranslatedItem extends CakeTestModel {
-/**
- * name property
- *
- * @var string 'TranslatedItem'
- * @access public
- */
-	var $name = 'TranslatedItem';
-/**
- * cacheQueries property
- *
- * @var bool false
- * @access public
- */
-	var $cacheQueries = false;
-/**
- * actsAs property
- *
- * @var array
- * @access public
- */
-	var $actsAs = array('Translate' => array('content', 'title'));
-/**
- * translateModel property
- *
- * @var string 'TranslateTestModel'
- * @access public
- */
-	var $translateModel = 'TranslateTestModel';
-}
-/**
- * TranslatedItemWithTable class.
- *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.model
- */
-class TranslatedItemWithTable extends CakeTestModel {
-/**
- * name property
- *
- * @var string 'TranslatedItemWithTable'
- * @access public
- */
-	var $name = 'TranslatedItemWithTable';
-/**
- * useTable property
- *
- * @var string 'translated_items'
- * @access public
- */
-	var $useTable = 'translated_items';
-/**
- * cacheQueries property
- *
- * @var bool false
- * @access public
- */
-	var $cacheQueries = false;
-/**
- * actsAs property
- *
- * @var array
- * @access public
- */
-	var $actsAs = array('Translate' => array('content', 'title'));
-/**
- * translateModel property
- *
- * @var string 'TranslateTestModel'
- * @access public
- */
-	var $translateModel = 'TranslateTestModel';
-/**
- * translateTable property
- *
- * @var string 'another_i18n'
- * @access public
- */
-	var $translateTable = 'another_i18n';
-}
-/**
- * TranslateArticleModel class.
- *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.model
- */
-class TranslateArticleModel extends CakeTestModel {
-/**
- * name property
- *
- * @var string 'TranslateArticleModel'
- * @access public
- */
-	var $name = 'TranslateArticleModel';
-/**
- * useTable property
- *
- * @var string 'article_i18n'
- * @access public
- */
-	var $useTable = 'article_i18n';
-/**
- * displayField property
- *
- * @var string 'field'
- * @access public
- */
-	var $displayField = 'field';
-}
-/**
- * TranslatedArticle class.
- *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.model
- */
-class TranslatedArticle extends CakeTestModel {
-/**
- * name property
- *
- * @var string 'TranslatedArticle'
- * @access public
- */
-	var $name = 'TranslatedArticle';
-/**
- * cacheQueries property
- *
- * @var bool false
- * @access public
- */
-	var $cacheQueries = false;
-/**
- * actsAs property
- *
- * @var array
- * @access public
- */
-	var $actsAs = array('Translate' => array('title', 'body'));
-/**
- * translateModel property
- *
- * @var string 'TranslateArticleModel'
- * @access public
- */
-	var $translateModel = 'TranslateArticleModel';
-/**
- * belongsTo property
- *
- * @var array
- * @access public
- */
-	var $belongsTo = array('User');
-}
-
-class CounterCacheUser extends CakeTestModel {
-	var $name = 'CounterCacheUser';
-	var $alias = 'User';
-
-	var $hasMany = array('Post' => array(
-		'className' => 'CounterCachePost',
-		'foreignKey' => 'user_id'
-	));
-}
-
-class CounterCachePost extends CakeTestModel {
-	var $name = 'CounterCachePost';
-	var $alias = 'Post';
-
-	var $belongsTo = array('User' => array(
-		'className' => 'CounterCacheUser',
-		'foreignKey' => 'user_id',
-		'counterCache' => true
-	));
-}
-
-class CounterCacheUserNonstandardPrimaryKey extends CakeTestModel {
-	var $name = 'CounterCacheUserNonstandardPrimaryKey';
-	var $alias = 'User';
-    var $primaryKey = 'uid';
-
-	var $hasMany = array('Post' => array(
-		'className' => 'CounterCachePostNonstandardPrimaryKey',
-		'foreignKey' => 'uid'
-	));
-}
-
-class CounterCachePostNonstandardPrimaryKey extends CakeTestModel {
-	var $name = 'CounterCachePostNonstandardPrimaryKey';
-	var $alias = 'Post';
-    var $primaryKey = 'pid';
-
-	var $belongsTo = array('User' => array(
-		'className' => 'CounterCacheUserNonstandardPrimaryKey',
-		'foreignKey' => 'uid',
-		'counterCache' => true
-	));
-}
-
-class ArticleB extends CakeTestModel {
-	var $name = 'ArticleB';
-	var $useTable = 'articles';
-	var $hasAndBelongsToMany = array(
-		'TagB' => array(
-			'className' => 'TagB',
-			'joinTable' => 'articles_tags',
-			'foreignKey' => 'article_id',
-			'associationForeignKey' => 'tag_id'
-		)
-	);
-}
-
-class TagB extends CakeTestModel {
-	var $name = 'TagB';
-	var $useTable = 'tags';
-	var $hasAndBelongsToMany = array(
-		'ArticleB' => array(
-			'className' => 'ArticleB',
-			'joinTable' => 'articles_tags',
-			'foreignKey' => 'tag_id',
-			'associationForeignKey' => 'article_id'
-		)
-	);
-}
-
-class Fruit extends CakeTestModel {
-	var $name = 'Fruit';
-	var $hasAndBelongsToMany = array(
-		'UuidTag' => array(
-			'className' => 'UuidTag',
-			'joinTable' => 'fruits_uuid_tags',
-			'foreignKey' => 'fruit_id',
-			'associationForeignKey' => 'uuid_tag_id',
-			'with' => 'FruitsUuidTag'
-		)
-	);
-}
-
-class FruitsUuidTag extends CakeTestModel {
-	var $name = 'FruitsUuidTag';
-	var $primaryKey = false;
-	var $belongsTo = array(
-		'UuidTag' => array(
-			'className' => 'UuidTag',
-			'foreignKey' => 'uuid_tag_id',
-		),
-		'Fruit' => array(
-			'className' => 'Fruit',
-			'foreignKey' => 'fruit_id',
-		)
-	);
-}
-
-class UuidTag extends CakeTestModel {
-	var $name = 'UuidTag';
-	var $hasAndBelongsToMany = array(
-		'Fruit' => array(
-			'className' => 'Fruit',
-			'joinTable' => 'fruits_uuid_tags',
-			'foreign_key' => 'uuid_tag_id',
-			'associationForeignKey' => 'fruit_id',
-			'with' => 'FruitsUuidTag'
-		)
-	);
-}
-
-class FruitNoWith extends CakeTestModel {
-	var $name = 'Fruit';
-	var $useTable = 'fruits';
-	var $hasAndBelongsToMany = array(
-		'UuidTag' => array(
-			'className' => 'UuidTagNoWith',
-			'joinTable' => 'fruits_uuid_tags',
-			'foreignKey' => 'fruit_id',
-			'associationForeignKey' => 'uuid_tag_id',
-		)
-	);
-}
-class UuidTagNoWith extends CakeTestModel {
-	var $name = 'UuidTag';
-	var $useTable = 'uuid_tags';
-	var $hasAndBelongsToMany = array(
-		'Fruit' => array(
-			'className' => 'FruitNoWith',
-			'joinTable' => 'fruits_uuid_tags',
-			'foreign_key' => 'uuid_tag_id',
-			'associationForeignKey' => 'fruit_id',
-		)
-	);
-}
-
 ?>

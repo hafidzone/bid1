@@ -1,37 +1,40 @@
 <?php
-/* SVN FILE: $Id$ */
+/* SVN FILE: $Id: rss.test.php 7690 2008-10-02 04:56:53Z nate $ */
 /**
- * RssHelperTest file
+ * Short description for file.
  *
  * Long description for file
  *
  * PHP versions 4 and 5
  *
  * CakePHP(tm) Tests <https://trac.cakephp.org/wiki/Developement/TestSuite>
- * Copyright 2005-2008, Cake Software Foundation, Inc. (http://www.cakefoundation.org)
+ * Copyright 2005-2008, Cake Software Foundation, Inc.
+ *								1785 E. Sahara Avenue, Suite 490-204
+ *								Las Vegas, Nevada 89104
  *
  *  Licensed under The Open Group Test Suite License
  *  Redistributions of files must retain the above copyright notice.
  *
  * @filesource
- * @copyright     Copyright 2005-2008, Cake Software Foundation, Inc. (http://www.cakefoundation.org)
- * @link          https://trac.cakephp.org/wiki/Developement/TestSuite CakePHP(tm) Tests
- * @package       cake
- * @subpackage    cake.tests.cases.libs.view.helpers
- * @since         CakePHP(tm) v 1.2.0.4206
- * @version       $Revision$
- * @modifiedby    $LastChangedBy$
- * @lastmodified  $Date$
- * @license       http://www.opensource.org/licenses/opengroup.php The Open Group Test Suite License
+ * @copyright		Copyright 2005-2008, Cake Software Foundation, Inc.
+ * @link				https://trac.cakephp.org/wiki/Developement/TestSuite CakePHP(tm) Tests
+ * @package			cake.tests
+ * @subpackage		cake.tests.cases.libs.view.helpers
+ * @since			CakePHP(tm) v 1.2.0.4206
+ * @version			$Revision: 7690 $
+ * @modifiedby		$LastChangedBy: nate $
+ * @lastmodified	$Date: 2008-10-02 00:56:53 -0400 (Thu, 02 Oct 2008) $
+ * @license			http://www.opensource.org/licenses/opengroup.php The Open Group Test Suite License
  */
 App::import('Helper', array('Rss', 'Time'));
+
 /**
- * RssHelperTest class
+ * Short description for class.
  *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.view.helpers
+ * @package		cake.tests
+ * @subpackage	cake.tests.cases.libs.view.helpers
  */
-class RssHelperTest extends CakeTestCase {
+class RssTest extends CakeTestCase {
 /**
  * setUp method
  *
@@ -42,7 +45,7 @@ class RssHelperTest extends CakeTestCase {
 		$this->Rss =& new RssHelper();
 		$this->Rss->Time =& new TimeHelper();
 		$this->Rss->beforeRender();
-
+		
 		$manager =& XmlManager::getInstance();
 		$manager->namespaces = array();
 	}
@@ -61,7 +64,7 @@ class RssHelperTest extends CakeTestCase {
  * @access public
  * @return void
  */
-	function testAddNamespace() {
+	function testAddNamespace() {		
 		$this->Rss->addNs('custom', 'http://example.com/dtd.xml');
 		$manager =& XmlManager::getInstance();
 
@@ -173,91 +176,41 @@ class RssHelperTest extends CakeTestCase {
 		$this->assertTags($result, $expected);
 	}
 /**
- * test correct creation of channel sub elements.
+ * testChannelElementLevelAttrib method
  *
  * @access public
  * @return void
  */
-	function testChannelElements() {
+	function testChannelElementLevelAttrib() {
 		$attrib = array();
 		$elements = array(
-			'title' => 'Title of RSS Feed',
-			'link' => 'http://example.com',
-			'description' => 'Description of RSS Feed',
+			'title' => 'title',
 			'image' => array(
-				'title' => 'Title of image',
-				'url' => 'http://example.com/example.png',
-				'link' => 'http://example.com'
-			),
-			'cloud' => array(
-				'domain' => "rpc.sys.com",
-				'port' => "80",
-				'path' =>"/RPC2",
-				'registerProcedure' => "myCloud.rssPleaseNotify",
-				'protocol' => "xml-rpc"
-			)
-		);
-		$content = 'content-here';
-		$result = $this->Rss->channel($attrib, $elements, $content);
-		$expected = array(
-			'<channel',
-				'<title', 'Title of RSS Feed', '/title',
-				'<link', 'http://example.com', '/link',
-				'<description', 'Description of RSS Feed', '/description',
-				'<image',
-					'<title', 'Title of image', '/title',
-					'<url', 'http://example.com/example.png', '/url',
-					'<link', 'http://example.com', '/link',
-				'/image',
-				'cloud' => array(
-					'domain' => "rpc.sys.com",
-					'port' => "80",
-					'path' =>"/RPC2",
-					'registerProcedure' => "myCloud.rssPleaseNotify",
-					'protocol' => "xml-rpc"
-				),
-			'content-here',
-			'/channel',
-		);
-		$this->assertTags($result, $expected);
-	}
-	function testChannelElementAttributes() {
-		$attrib = array();
-		$elements = array(
-			'title' => 'Title of RSS Feed',
-			'link' => 'http://example.com',
-			'description' => 'Description of RSS Feed',
-			'image' => array(
-				'title' => 'Title of image',
-				'url' => 'http://example.com/example.png',
-				'link' => 'http://example.com'
-			),
-			'atom:link' => array(
+				'myImage',
 				'attrib' => array(
-					'href' => 'http://www.example.com/rss.xml',
-					'rel' => 'self',
-					'type' => 'application/rss+xml')
+					'href' => 'http://localhost'
+				)
 			)
 		);
-		$content = 'content-here';
+		$content = 'content';
+
 		$result = $this->Rss->channel($attrib, $elements, $content);
 		$expected = array(
 			'<channel',
-				'<title', 'Title of RSS Feed', '/title',
-				'<link', 'http://example.com', '/link',
-				'<description', 'Description of RSS Feed', '/description',
-				'<image',
-					'<title', 'Title of image', '/title',
-					'<url', 'http://example.com/example.png', '/url',
-					'<link', 'http://example.com', '/link',
-				'/image',
-				'atom:link' => array(
-					'href' => "http://www.example.com/rss.xml",
-					'rel' => "self",
-					'type' =>"application/rss+xml"
-				),
-			'content-here',
-			'/channel',
+			'<title',
+			'title',
+			'/title',
+			'image' => array(
+				'href' => 'http://localhost'
+			),
+			'<myImage',
+			'/image',
+			'<link',
+			RssHelper::url('/', true),
+			'/link',
+			'<description',
+			'content',
+			'/channel'
 		);
 		$this->assertTags($result, $expected);
 	}
@@ -301,6 +254,7 @@ class RssHelperTest extends CakeTestCase {
 		$expected = '';
 		$this->assertEqual($result, $expected);
 	}
+	
 /**
  * testItem method
  *
@@ -346,7 +300,6 @@ class RssHelperTest extends CakeTestCase {
 			'guid' => 'http://www.example.com/1'
 		);
 		$result = $this->Rss->item(null, $item);
-
 		$expected = array(
 			'<item',
 			'<title',
@@ -359,7 +312,7 @@ class RssHelperTest extends CakeTestCase {
 			'<![CDATA[descriptive words]]',
 			'/description',
 			'<pubDate',
-			date('r', strtotime('2008-05-31 12:00:00')),
+			'Sat, 31 May 2008 12:00:00 ' . date('O'),
 			'/pubDate',
 			'<guid',
 			'http://www.example.com/1',
@@ -459,7 +412,7 @@ class RssHelperTest extends CakeTestCase {
 			'/item'
 		);
 		$this->assertTags($result, $expected);
-
+		
 		$item = array(
 			'title' => array(
 				'value' => 'My Title',
@@ -501,7 +454,7 @@ class RssHelperTest extends CakeTestCase {
 			'/description',
 			'enclosure' => array('url' => RssHelper::url('/test.flv', true)),
 			'<pubDate',
-			date('r', strtotime('2008-05-31 12:00:00')),
+			'Sat, 31 May 2008 12:00:00 ' . date('O'),
 			'/pubDate',
 			'<guid',
 			'http://www.example.com/1',

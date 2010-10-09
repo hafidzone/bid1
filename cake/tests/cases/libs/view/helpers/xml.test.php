@@ -1,28 +1,30 @@
 <?php
-/* SVN FILE: $Id$ */
+/* SVN FILE: $Id: xml.test.php 7690 2008-10-02 04:56:53Z nate $ */
 /**
- * XmlHelperTest file
+ * Short description for file.
  *
  * Long description for file
  *
  * PHP versions 4 and 5
  *
  * CakePHP(tm) Tests <https://trac.cakephp.org/wiki/Developement/TestSuite>
- * Copyright 2005-2008, Cake Software Foundation, Inc. (http://www.cakefoundation.org)
+ * Copyright 2005-2008, Cake Software Foundation, Inc.
+ *								1785 E. Sahara Avenue, Suite 490-204
+ *								Las Vegas, Nevada 89104
  *
  *  Licensed under The Open Group Test Suite License
  *  Redistributions of files must retain the above copyright notice.
  *
  * @filesource
- * @copyright     Copyright 2005-2008, Cake Software Foundation, Inc. (http://www.cakefoundation.org)
- * @link          https://trac.cakephp.org/wiki/Developement/TestSuite CakePHP(tm) Tests
- * @package       cake
- * @subpackage    cake.tests.cases.libs.view.helpers
- * @since         CakePHP(tm) v 1.2.0.4206
- * @version       $Revision$
- * @modifiedby    $LastChangedBy$
- * @lastmodified  $Date$
- * @license       http://www.opensource.org/licenses/opengroup.php The Open Group Test Suite License
+ * @copyright		Copyright 2005-2008, Cake Software Foundation, Inc.
+ * @link				https://trac.cakephp.org/wiki/Developement/TestSuite CakePHP(tm) Tests
+ * @package			cake.tests
+ * @subpackage		cake.tests.cases.libs.view.helpers
+ * @since			CakePHP(tm) v 1.2.0.4206
+ * @version			$Revision: 7690 $
+ * @modifiedby		$LastChangedBy: nate $
+ * @lastmodified	$Date: 2008-10-02 00:56:53 -0400 (Thu, 02 Oct 2008) $
+ * @license			http://www.opensource.org/licenses/opengroup.php The Open Group Test Suite License
  */
 if (!defined('CAKEPHP_UNIT_TEST_EXECUTION')) {
 	define('CAKEPHP_UNIT_TEST_EXECUTION', 1);
@@ -31,8 +33,8 @@ App::import('Helper', 'Xml');
 /**
  * TestXml class
  *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.view.helpers
+ * @package              cake
+ * @subpackage           cake.tests.cases.libs.view.helpers
  */
 class TestXml extends Object {
 /**
@@ -63,10 +65,10 @@ class TestXml extends Object {
 	}
 }
 /**
- * XmlHelperTest class
+ * Short description for class.
  *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.view.helpers
+ * @package		cake.tests
+ * @subpackage	cake.tests.cases.libs.view.helpers
  */
 class XmlHelperTest extends CakeTestCase {
 /**
@@ -80,15 +82,6 @@ class XmlHelperTest extends CakeTestCase {
 		$this->Xml->beforeRender();
 		$manager =& XmlManager::getInstance();
 		$manager->namespaces = array();
-	}
-/**
- * tearDown method
- *
- * @access public
- * @return void
- */
-	function tearDown() {
-		unset($this->Xml);
 	}
 /**
  * testAddNamespace method
@@ -248,5 +241,15 @@ class XmlHelperTest extends CakeTestCase {
 		$expected = '<?xml encoding="UTF-8" someOther="value" ?>';
 		$this->assertIdentical($result, $expected);
 	}
+/**
+ * tearDown method
+ *
+ * @access public
+ * @return void
+ */
+	function tearDown() {
+		unset($this->Xml);
+	}
 }
+
 ?>

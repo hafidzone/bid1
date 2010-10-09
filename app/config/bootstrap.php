@@ -1,44 +1,55 @@
 <?php
-/* SVN FILE: $Id$ */
-/**
- * Short description for file.
- *
- * Long description for file
- *
- * PHP versions 4 and 5
- *
- * CakePHP(tm) :  Rapid Development Framework (http://www.cakephp.org)
- * Copyright 2005-2008, Cake Software Foundation, Inc. (http://www.cakefoundation.org)
- *
- * Licensed under The MIT License
- * Redistributions of files must retain the above copyright notice.
- *
- * @filesource
- * @copyright     Copyright 2005-2008, Cake Software Foundation, Inc. (http://www.cakefoundation.org)
- * @link          http://www.cakefoundation.org/projects/info/cakephp CakePHP(tm) Project
- * @package       cake
- * @subpackage    cake.app.config
- * @since         CakePHP(tm) v 0.10.8.2117
- * @version       $Revision$
- * @modifiedby    $LastChangedBy$
- * @lastmodified  $Date$
- * @license       http://www.opensource.org/licenses/mit-license.php The MIT License
- */
-/**
- *
- * This file is loaded automatically by the app/webroot/index.php file after the core bootstrap.php is loaded
- * This is an application wide file to load any function that is not used within a class define.
- * You can also use this to include or require any files in your application.
- *
- */
-/**
- * The settings below can be used to set additional paths to models, views and controllers.
- * This is related to Ticket #470 (https://trac.cakephp.org/ticket/470)
- *
- * $modelPaths = array('full path to models', 'second full path to models', 'etc...');
- * $viewPaths = array('this path to views', 'second full path to views', 'etc...');
- * $controllerPaths = array('this path to controllers', 'second full path to controllers', 'etc...');
- *
- */
-//EOF
+    uses('L10n');
+    Configure::load('config');
+
+    // Get the configuration in one read
+    $appConfigurations = Configure::read('App');
+    
+    // lets check for multiversions
+    $_SERVER['SERVER_NAME'] = str_replace('www.', '', $_SERVER['SERVER_NAME']);
+
+	if(!empty($appConfigurations['serverName']) && !empty($appConfigurations['multiVersions'])){
+		if($appConfigurations['serverName'] !== $_SERVER['SERVER_NAME']) {
+			foreach($appConfigurations['multiVersions'] as $url => $details) {
+				if($url == $_SERVER['SERVER_NAME']) {
+					Configure::write('App.serverName', $url);
+					Configure::write('App.name', $appConfigurations['multiVersions'][$url]['name']);
+					Configure::write('App.url', $appConfigurations['multiVersions'][$url]['url']);
+					Configure::write('App.timezone', $appConfigurations['multiVersions'][$url]['timezone']);
+					Configure::write('App.language', $appConfigurations['multiVersions'][$url]['language']);
+					Configure::write('App.currency', $appConfigurations['multiVersions'][$url]['currency']);
+					Configure::write('App.noCents', $appConfigurations['multiVersions'][$url]['noCents']);
+					Configure::write('App.theme', $appConfigurations['multiVersions'][$url]['theme']);
+				}
+			}
+		}
+	}
+	
+	// wwwRedirect
+	if(!empty($appConfigurations['wwwRedirect'])) {
+		if(substr($_SERVER['HTTP_HOST'], 0, 4) !== 'www.') {
+			header('location:'.$appConfigurations['url'].$_SERVER['REQUEST_URI']);
+		}
+	}
+
+	// used for setting default config values
+	if(empty($appConfigurations['adminPageLimit'])) {
+		Configure::write('App.adminPageLimit', 100);
+	}
+
+    // Do not change any line below
+    if(!empty($appConfigurations['timezone'])){
+        putenv("TZ=".$appConfigurations['timezone']);
+    }
+
+    // Set the internationalization for app
+    Configure::write('Config.language', $appConfigurations['language']);
+
+    // define the image thumb constant
+    define('IMAGE_THUMB_WIDTH', $appConfigurations['Image']['thumb_width']);
+    define('IMAGE_THUMB_HEIGHT', $appConfigurations['Image']['thumb_height']);
+    define('IMAGE_MAX_WIDTH', $appConfigurations['Image']['max_width']);
+    define('IMAGE_MAX_HEIGHT', $appConfigurations['Image']['max_height']);
+
+    ini_set('memory_limit', $appConfigurations['memoryLimit']);
 ?>

@@ -1,58 +1,62 @@
 <?php
-/* SVN FILE: $Id$ */
+/* SVN FILE: $Id: dbo_adodb.test.php 7296 2008-06-27 09:09:03Z gwoo $ */
 /**
- * DboAdodbTest file
+ * AdoDB layer for DBO.
  *
- * AdoDB layer for DBO
+ * Long description for file
  *
  * PHP versions 4 and 5
  *
- * CakePHP(tm) :  Rapid Development Framework (http://www.cakephp.org)
- * Copyright 2005-2008, Cake Software Foundation, Inc. (http://www.cakefoundation.org)
+ * CakePHP(tm) :  Rapid Development Framework <http://www.cakephp.org/>
+ * Copyright 2005-2008, Cake Software Foundation, Inc.
+ *								1785 E. Sahara Avenue, Suite 490-204
+ *								Las Vegas, Nevada 89104
  *
  * Licensed under The MIT License
  * Redistributions of files must retain the above copyright notice.
  *
  * @filesource
- * @copyright     Copyright 2005-2008, Cake Software Foundation, Inc. (http://www.cakefoundation.org)
- * @link          http://www.cakefoundation.org/projects/info/cakephp CakePHP(tm) Project
- * @package       cake
- * @subpackage    cake.cake.libs.model.datasources.dbo
- * @since         CakePHP(tm) v 0.2.9
- * @version       $Rev$
- * @modifiedby    $LastChangedBy$
- * @lastmodified  $Date$
- * @license       http://www.opensource.org/licenses/mit-license.php The MIT License
+ * @copyright		Copyright 2005-2008, Cake Software Foundation, Inc.
+ * @link				http://www.cakefoundation.org/projects/info/cakephp CakePHP(tm) Project
+ * @package			cake
+ * @subpackage		cake.cake.libs.model.datasources.dbo
+ * @since			CakePHP(tm) v 0.2.9
+ * @version			$Rev: 7296 $
+ * @modifiedby		$LastChangedBy: gwoo $
+ * @lastmodified	$Date: 2008-06-27 05:09:03 -0400 (Fri, 27 Jun 2008) $
+ * @license			http://www.opensource.org/licenses/mit-license.php The MIT License
  */
+
 require_once LIBS.'model'.DS.'model.php';
 require_once LIBS.'model'.DS.'datasources'.DS.'datasource.php';
 require_once LIBS.'model'.DS.'datasources'.DS.'dbo_source.php';
 require_once LIBS.'model'.DS.'datasources'.DS.'dbo'.DS.'dbo_adodb.php';
+
 /**
- * DboAdoTestDb
+ * Short description for class.
  *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.model.datasources
+ * @package		cake.tests
+ * @subpackage	cake.tests.cases.libs.model.datasources
  */
 class DboAdoTestDb extends DboAdodb {
 /**
  * simulated property
- *
+ * 
  * @var array
  * @access public
  */
 	var $simulated = array();
 /**
  * testing property
- *
+ * 
  * @var bool true
  * @access public
  */
 	var $testing = true;
 /**
  * execute method
- *
- * @param mixed $sql
+ * 
+ * @param mixed $sql 
  * @access protected
  * @return void
  */
@@ -65,7 +69,7 @@ class DboAdoTestDb extends DboAdodb {
 	}
 /**
  * getLastQuery method
- *
+ * 
  * @access public
  * @return void
  */
@@ -73,34 +77,35 @@ class DboAdoTestDb extends DboAdodb {
 		return $this->simulated[count($this->simulated) - 1];
 	}
 }
+
 /**
- * AdodbTestModel
+ * Short description for class.
  *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.model.datasources
+ * @package		cake.tests
+ * @subpackage	cake.tests.cases.libs.model.datasources
  */
 class AdodbTestModel extends CakeTestModel {
 /**
  * name property
- *
+ * 
  * @var string 'AdodbTestModel'
  * @access public
  */
 	var $name = 'AdodbTestModel';
 /**
  * useTable property
- *
+ * 
  * @var bool false
  * @access public
  */
 	var $useTable = false;
 /**
  * find method
- *
- * @param mixed $conditions
- * @param mixed $fields
- * @param mixed $order
- * @param mixed $recursive
+ * 
+ * @param mixed $conditions 
+ * @param mixed $fields 
+ * @param mixed $order 
+ * @param mixed $recursive 
  * @access public
  * @return void
  */
@@ -109,11 +114,11 @@ class AdodbTestModel extends CakeTestModel {
 	}
 /**
  * findAll method
- *
- * @param mixed $conditions
- * @param mixed $fields
- * @param mixed $order
- * @param mixed $recursive
+ * 
+ * @param mixed $conditions 
+ * @param mixed $fields 
+ * @param mixed $order 
+ * @param mixed $recursive 
  * @access public
  * @return void
  */
@@ -122,7 +127,7 @@ class AdodbTestModel extends CakeTestModel {
 	}
 /**
  * schema method
- *
+ * 
  * @access public
  * @return void
  */
@@ -149,44 +154,48 @@ class AdodbTestModel extends CakeTestModel {
 		);
 	}
 }
+
 if (!class_exists('Article')) {
 /**
  * Article class
- *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.model.datasources.dbo
+ * 
+ * @package              cake
+ * @subpackage           cake.tests.cases.libs.model.datasources.dbo
  */
 	class Article extends CakeTestModel {
 /**
  * name property
- *
+ * 
  * @var string 'Article'
  * @access public
  */
 		var $name = 'Article';
+	
 	}
 }
+
 /**
- * DboAdodbTest class
+ * The test class for the DboAdobd
  *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.model.datasources.dbo
+ * @package		cake.tests
+ * @subpackage	cake.tests.cases.libs.model.datasources.dbo
  */
 class DboAdodbTest extends CakeTestCase {
 /**
  * The Dbo instance to be tested
  *
- * @var DboSource
+ * @var object
  * @access public
  */
 	var $db = null;
+	
 /**
- * fixtures property
+ * undocumented class variable
  *
  * @var string
- * @access public
  **/
 	var $fixtures = array('core.article');
+	
 /**
  * Skip if cannot connect to AdoDb
  *
@@ -195,7 +204,7 @@ class DboAdodbTest extends CakeTestCase {
 	function skip() {
 		$this->_initDb();
 		$db =& ConnectionManager::getDataSource('test_suite');
-		$this->skipIf($db->config['driver'] != 'adodb', '%s Adodb connection not available');
+		$this->skipif($db->config['driver'] != 'adodb', 'Adodb connection not available');
 	}
 /**
  * Sets up a Dbo class instance for testing
@@ -266,12 +275,13 @@ class DboAdodbTest extends CakeTestCase {
 	}
 /**
  * testColumns method
- *
+ * 
  * @access public
  * @return void
  */
 	function testColumns() {
 
 	}
+
 }
 ?>

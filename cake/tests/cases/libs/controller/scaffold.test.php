@@ -1,35 +1,37 @@
 <?php
-/* SVN FILE: $Id$ */
+/* SVN FILE: $Id: scaffold.test.php 7690 2008-10-02 04:56:53Z nate $ */
 /**
- * ScaffoldTest file
+ * Short description for file.
  *
  * Long description for file
  *
  * PHP versions 4 and 5
  *
  * CakePHP(tm) Tests <https://trac.cakephp.org/wiki/Developement/TestSuite>
- * Copyright 2005-2008, Cake Software Foundation, Inc. (http://www.cakefoundation.org)
+ * Copyright 2005-2008, Cake Software Foundation, Inc.
+ *								1785 E. Sahara Avenue, Suite 490-204
+ *								Las Vegas, Nevada 89104
  *
  *  Licensed under The Open Group Test Suite License
  *  Redistributions of files must retain the above copyright notice.
  *
  * @filesource
- * @copyright     Copyright 2005-2008, Cake Software Foundation, Inc. (http://www.cakefoundation.org)
- * @link          https://trac.cakephp.org/wiki/Developement/TestSuite CakePHP(tm) Tests
- * @package       cake
- * @subpackage    cake.tests.cases.libs.controller
- * @since         CakePHP(tm) v 1.2.0.5436
- * @version       $Revision$
- * @modifiedby    $LastChangedBy$
- * @lastmodified  $Date$
- * @license       http://www.opensource.org/licenses/opengroup.php The Open Group Test Suite License
+ * @copyright		Copyright 2005-2008, Cake Software Foundation, Inc.
+ * @link				https://trac.cakephp.org/wiki/Developement/TestSuite CakePHP(tm) Tests
+ * @package			cake.tests
+ * @subpackage		cake.tests.cases.libs.controller
+ * @since			CakePHP(tm) v 1.2.0.5436
+ * @version			$Revision: 7690 $
+ * @modifiedby		$LastChangedBy: nate $
+ * @lastmodified	$Date: 2008-10-02 00:56:53 -0400 (Thu, 02 Oct 2008) $
+ * @license			http://www.opensource.org/licenses/opengroup.php The Open Group Test Suite License
  */
 App::import('Core', 'Scaffold');
 /**
  * ScaffoldMockController class
  *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.controller
+ * @package              cake
+ * @subpackage           cake.tests.cases.libs.controller
  */
 class ScaffoldMockController extends Controller {
 /**
@@ -47,11 +49,12 @@ class ScaffoldMockController extends Controller {
  */
 	var $scaffold;
 }
+
 /**
- * TestScaffoldMock class
+ * TestScaffoldMock
  *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.controller
+ * @package              cake
+ * @subpackage           cake.tests.cases.libs.controller
  */
 class TestScaffoldMock extends Scaffold {
 /**
@@ -71,11 +74,12 @@ class TestScaffoldMock extends Scaffold {
         return $this->_params;
     }
 }
+
 /**
  * ScaffoldMock class
  *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.controller
+ * @package              cake
+ * @subpackage           cake.tests.cases.libs.controller
  */
 class ScaffoldMock extends CakeTestModel {
 /**
@@ -110,11 +114,12 @@ class ScaffoldMock extends CakeTestModel {
 		)
 	);
 }
+
 /**
- * ScaffoldUser class
+ * ScaffoldAuthor class
  *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.controller
+ * @package              cake
+ * @subpackage           cake.tests.cases.libs.controller
  */
 class ScaffoldUser extends CakeTestModel {
 /**
@@ -137,11 +142,12 @@ class ScaffoldUser extends CakeTestModel {
 		)
 	);
 }
+
 /**
  * ScaffoldComment class
  *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.controller
+ * @package              cake
+ * @subpackage           cake.tests.cases.libs.controller
  */
 class ScaffoldComment extends CakeTestModel {
 /**
@@ -164,11 +170,12 @@ class ScaffoldComment extends CakeTestModel {
 		)
 	);
 }
+
 /**
  * TestScaffoldView class
  *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.controller
+ * @package              cake
+ * @subpackage           cake.tests.cases.libs.controller
  */
 class TestScaffoldView extends ScaffoldView {
 /**
@@ -183,10 +190,10 @@ class TestScaffoldView extends ScaffoldView {
 	}
 }
 /**
- * ScaffoldViewTest class
+ * ScaffoldViewTest Case.
  *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.controller
+ * @package    cake.tests
+ * @subpackage cake.tests.cases.libs.controller
  */
 class ScaffoldViewTest extends CakeTestCase {
 /**
@@ -204,15 +211,6 @@ class ScaffoldViewTest extends CakeTestCase {
  */
 	function setUp() {
 		$this->Controller =& new ScaffoldMockController();
-	}
-/**
- * tearDown method
- *
- * @access public
- * @return void
- */
-	function tearDown() {
-		unset($this->Controller);
 	}
 /**
  * testGetViewFilename method
@@ -302,6 +300,7 @@ class ScaffoldViewTest extends CakeTestCase {
 		Configure::write('pluginPaths', $_back['pluginPaths']);
 		Configure::write('Routing.admin', $_admin);
 	}
+
 /**
  * test default index scaffold generation
  *
@@ -508,21 +507,26 @@ class ScaffoldViewTest extends CakeTestCase {
 
 		Configure::write('Routing.admin', $_backAdmin);
 	}
-}
+
 /**
- * Scaffold Test class
+ * tearDown method
  *
- * @package       cake
- * @subpackage    cake.tests.cases.libs.controller
- */
-class ScaffoldTest extends CakeTestCase {
-/**
- * Controller property
- *
- * @var SecurityTestController
  * @access public
+ * @return void
  */
-	var $Controller;
+	function tearDown() {
+		unset($this->Controller);
+	}
+}
+
+
+/**
+ * Scaffold Test Case
+ *
+ * @package              cake
+ * @subpackage           cake.tests.cases.libs.controller
+ */
+class ScaffoldTestCase extends CakeTestCase {
 /**
  * fixtures property
  *
@@ -538,15 +542,6 @@ class ScaffoldTest extends CakeTestCase {
  */
 	function setUp() {
 		$this->Controller =& new ScaffoldMockController();
-	}
-/**
- * tearDown method
- *
- * @access public
- * @return void
- */
-	function tearDown() {
-		unset($this->Controller);
 	}
 /**
  * Test the correct Generation of Scaffold Params.
@@ -580,5 +575,15 @@ class ScaffoldTest extends CakeTestCase {
 		$result = $Scaffold->getParams();
 		$this->assertEqual($result['action'], 'admin_edit');
 	}
+/**
+ * tearDown method
+ *
+ * @access public
+ * @return void
+ */
+	function tearDown() {
+		unset($this->Controller);
+	}
 }
+
 ?>

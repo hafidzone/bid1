@@ -1,43 +1,41 @@
 <?php
-/* SVN FILE: $Id$ */
+/* SVN FILE: $Id: xml.test.php 7690 2008-10-02 04:56:53Z nate $ */
 /**
- * XmlTest file
+ * Short description for file.
  *
  * Long description for file
  *
  * PHP versions 4 and 5
  *
  * CakePHP(tm) Tests <https://trac.cakephp.org/wiki/Developement/TestSuite>
- * Copyright 2005-2008, Cake Software Foundation, Inc. (http://www.cakefoundation.org)
+ * Copyright 2005-2008, Cake Software Foundation, Inc.
+ *								1785 E. Sahara Avenue, Suite 490-204
+ *								Las Vegas, Nevada 89104
  *
  *  Licensed under The Open Group Test Suite License
  *  Redistributions of files must retain the above copyright notice.
  *
  * @filesource
- * @copyright     Copyright 2005-2008, Cake Software Foundation, Inc. (http://www.cakefoundation.org)
- * @link          https://trac.cakephp.org/wiki/Developement/TestSuite CakePHP(tm) Tests
- * @package       cake
- * @subpackage    cake.tests.cases.libs
- * @since         CakePHP(tm) v 1.2.0.5432
- * @version       $Revision$
- * @modifiedby    $LastChangedBy$
- * @lastmodified  $Date$
- * @license       http://www.opensource.org/licenses/opengroup.php The Open Group Test Suite License
+ * @copyright		Copyright 2005-2008, Cake Software Foundation, Inc.
+ * @link				https://trac.cakephp.org/wiki/Developement/TestSuite CakePHP(tm) Tests
+ * @package			cake.tests
+ * @subpackage		cake.tests.cases.libs
+ * @since			CakePHP(tm) v 1.2.0.5432
+ * @version			$Revision: 7690 $
+ * @modifiedby		$LastChangedBy: nate $
+ * @lastmodified	$Date: 2008-10-02 00:56:53 -0400 (Thu, 02 Oct 2008) $
+ * @license			http://www.opensource.org/licenses/opengroup.php The Open Group Test Suite License
  */
 App::import('Core', 'Xml');
+
 /**
- * XmlTest class
+ * Short description for class.
  *
- * @package       cake
- * @subpackage    cake.tests.cases.libs
+ * @package    cake.tests
+ * @subpackage cake.tests.cases.libs
  */
 class XmlTest extends CakeTestCase {
-/**
- * setUp method
- *
- * @access public
- * @return void
- */
+
 	function setUp() {
 		$manager =& new XmlManager();
 		$manager->namespaces = array();
@@ -164,25 +162,10 @@ class XmlTest extends CakeTestCase {
  */
 	function testArraySingleSerialization() {
 		$input = array(
-			'Post' => array(
-				'id' => '1', 'author_id' => '1', 'title' => 'First Post',
-				'body' => 'First Post Body', 'published' => 'Y',
-				'created' => '2007-03-18 10:39:23', 'updated' => '2007-03-18 10:41:31'
-			),
-			'Author' => array(
-				'id' => '1', 'user' => 'mariano', 'password' => '5f4dcc3b5aa765d61d8327deb882cf99',
-				'created' => '2007-03-17 01:16:23', 'updated' => '2007-03-17 01:18:31', 'test' => 'working'
-			)
+			'Post' => array('id' => '1', 'author_id' => '1', 'title' => 'First Post', 'body' => 'First Post Body', 'published' => 'Y', 'created' => '2007-03-18 10:39:23', 'updated' => '2007-03-18 10:41:31'),
+			'Author' => array('id' => '1', 'user' => 'mariano', 'password' => '5f4dcc3b5aa765d61d8327deb882cf99', 'created' => '2007-03-17 01:16:23', 'updated' => '2007-03-17 01:18:31', 'test' => 'working'),
 		);
-
-		$expected = '<post><id>1</id><author_id>1</author_id><title><![CDATA[First Post]]>';
-		$expected .= '</title><body><![CDATA[First Post Body]]></body><published><![CDATA[Y]]>';
-		$expected .= '</published><created><![CDATA[2007-03-18 10:39:23]]></created><updated>';
-		$expected .= '<![CDATA[2007-03-18 10:41:31]]></updated><author><id>1</id><user>';
-		$expected .= '<![CDATA[mariano]]></user><password><![CDATA[5f4dcc3b5aa765d61d8327deb882';
-		$expected .= 'cf99]]></password><created><![CDATA[2007-03-17 01:16:23]]></created>';
-		$expected .= '<updated><![CDATA[2007-03-17 01:18:31]]></updated><test><![CDATA[working]]>';
-		$expected .= '</test></author></post>';
+		$expected = '<post><id>1</id><author_id>1</author_id><title><![CDATA[First Post]]></title><body><![CDATA[First Post Body]]></body><published><![CDATA[Y]]></published><created><![CDATA[2007-03-18 10:39:23]]></created><updated><![CDATA[2007-03-18 10:41:31]]></updated><author><id>1</id><user><![CDATA[mariano]]></user><password><![CDATA[5f4dcc3b5aa765d61d8327deb882cf99]]></password><created><![CDATA[2007-03-17 01:16:23]]></created><updated><![CDATA[2007-03-17 01:18:31]]></updated><test><![CDATA[working]]></test></author></post>';
 
 		$xml = new Xml($input, array('format' => 'tags'));
 		$result = $xml->toString(false);
@@ -254,26 +237,6 @@ class XmlTest extends CakeTestCase {
 
 		$xml = new Xml($input, array('format' => 'tags'));
 		$result = $xml->toString(array('header' => false, 'cdata' => false));
-		$this->assertEqual($expected, $result);
-	}
-/**
- * Prove that serialization with a given root node works
- * as expected.
- *
- * @access public
- * @return void
- * @link   https://trac.cakephp.org/ticket/6294
- */
-	function testArraySerializationWithRoot() {
-		$input = array(
-					array('Shirt' => array('id' => 1, 'color' => 'green')),
-					array('Shirt' => array('id' => 2, 'color' => 'blue')),
-					);
-		$expected = '<collection><shirt id="1" color="green" />';
-		$expected .= '<shirt id="2" color="blue" /></collection>';
-
-		$Xml = new Xml($input, array('root' => 'collection'));
-		$result = $Xml->toString(array('header' => false));
 		$this->assertEqual($expected, $result);
 	}
 /**
@@ -390,162 +353,145 @@ class XmlTest extends CakeTestCase {
 		$this->assertFalse($result);
 	}
 
-	/**
-	 * Tests that XML documents with non-standard spacing (i.e. leading whitespace, whole document
-	 * on one line) still parse properly.
-	 *
-	 * @return void
+/*
+	 * Not implemented yet
 	 */
-	function testParsingWithNonStandardWhitespace() {
-		$raw = '<?xml version="1.0" encoding="ISO-8859-1" ?><prices><price>1.0</price></prices>';
-		$array = array('Prices' => array('price' => 1.0));
+// function testChildFilter() {
+// 	$input = array(
+// 		array(
+// 			'Project' => array('id' => 1, 'title' => null, 'client_id' => 1, 'show' => 1, 'is_spotlight' => null, 'style_id' => 0, 'job_type_id' => 1, 'industry_id' => 1, 'modified' => null, 'created' => null),
+// 			'Style' => array('id' => null, 'name' => null),
+// 			'JobType' => array('id' => 1, 'name' => 'Touch Screen Kiosk'),
+// 			'Industry' => array('id' => 1, 'name' => 'Financial'),
+// 			'BusinessSolution' => array(array('id' => 6, 'name' => 'Convert Sales')),
+// 			'MediaType' => array(
+// 				array('id' => 15, 'name' => 'Print'),
+// 				array('id' => 7, 'name' => 'Web Demo'),
+// 				array('id' => 6, 'name' => 'CD-ROM')
+// 			)
+// 		),
+// 		array(
+// 			'Project' => array('id' => 2, 'title' => null, 'client_id' => 2, 'show' => 1, 'is_spotlight' => null, 'style_id' => 0, 'job_type_id' => 2, 'industry_id' => 2, 'modified' => '2007-11-26 14:48:36', 'created' => null),
+// 			'Style' => array('id' => null, 'name' => null),
+// 			'JobType' => array('id' => 2, 'name' => 'Awareness Campaign'),
+// 			'Industry' => array('id' => 2, 'name' => 'Education'),
+// 			'BusinessSolution' => array(
+// 				array('id' => 4, 'name' => 'Build Relationship'),
+// 				array('id' => 6, 'name' => 'Convert Sales')
+// 			),
+// 			'MediaType' => array(
+// 				array('id' => 17, 'name' => 'Web'),
+// 				array('id' => 6, 'name' => 'CD-ROM')
+// 			)
+// 		)
+// 	);
+//
+// 	$xml = new Xml($input, array('format' => 'tags', 'tags' => array(
+// 		'MediaType'	=> array('value' => 'id', 'children' => false),
+// 		'JobType'	=> array('children' => array()),
+// 		'Industry'	=> array('children' => array('name')),
+// 		'show'		=> false
+// 	)));
+//
+// 	$result = $xml->toString(array('header' => false, 'cdata' => false));
+// 	$expected = '<project><id>1</id><title /><client_id>1</client_id><is_spotlight /><style_id>0</style_id><job_type_id>1</job_type_id><industry_id>1</industry_id><modified /><created /><style><id /><name /></style><job_type><id>1</id><name>Touch Screen Kiosk</name></job_type><industry><name>Financial</name></industry><business_solution><id>6</id><name>Convert Sales</name></business_solution><media_type>15</media_type><media_type>7</media_type><media_type>6</media_type></project><project><id>2</id><title /><client_id>2</client_id><is_spotlight /><style_id>0</style_id><job_type_id>2</job_type_id><industry_id>2</industry_id><modified>2007-11-26 14:48:36</modified><created /><style><id /><name /></style><job_type><id>2</id><name>Awareness Campaign</name></job_type><industry><name>Education</name></industry><business_solution><id>4</id><name>Build Relationship</name></business_solution><business_solution><id>6</id><name>Convert Sales</name></business_solution><media_type>17</media_type><media_type>6</media_type></project>';
+// 	$this->assertEqual($expected, $result);
+// }
 
-		$xml = new Xml($raw);
-		$this->assertEqual($xml->toArray(), $array);
-		$this->assertEqual($xml->__header, 'xml version="1.0" encoding="ISO-8859-1"');
+/*
+	 * Broken due to a Set class issue
+	 */
+// function testMixedArray() {
+// 	$input = array('OptionGroup' => array(
+// 		array('name' => 'OptA', 'id' => 12, 'OptA 1', 'OptA 2', 'OptA 3', 'OptA 4', 'OptA 5', 'OptA 6'),
+// 		array('name' => 'OptB', 'id' => 12, 'OptB 1', 'OptB 2', 'OptB 3', 'OptB 4', 'OptB 5', 'OptB 6')
+// 	));
+// 	$expected = '<option_group><name>OptA</name><id>12</id><option_group>OptA 1</option_group><option_group>OptA 2</option_group><option_group>OptA 3</option_group><option_group>OptA 4</option_group><option_group>OptA 5</option_group><option_group>OptA 6</option_group></option_group><option_group><name>OptB</name><id>12</id><option_group>OptB 1</option_group><option_group>OptB 2</option_group><option_group>OptB 3</option_group><option_group>OptB 4</option_group><option_group>OptB 5</option_group><option_group>OptB 6</option_group></option_group>';
+// 	$xml = new Xml($input, array('format' => 'tags'));
+// 	$result = $xml->toString(array('header' => false, 'cdata' => false));
+// 	$this->assertEqual($expected, $result);
+// }
 
-		$xml = new Xml(' ' . $raw);
-		$this->assertEqual($xml->toArray(), $array);
-		$this->assertEqual($xml->__header, 'xml version="1.0" encoding="ISO-8859-1"');
+// function testMixedNestedArray() {
+// 	$input = array(
+// 		'OptionA' =>  array(
+// 			'name' => 'OptA',
+// 			'id' => 12,
+// 			'opt' => array('OptA 1', 'OptA 2', 'OptA 3', 'OptA 4', 'OptA 5', 'OptA 6')
+// 		),
+// 		'OptionB' 	=> array(
+// 			'name' => 'OptB',
+// 			'id' => 12,
+// 			'opt' => array('OptB 1', 'OptB 2', 'OptB 3', 'OptB 4', 'OptB 5', 'OptB 6')
+// 		)
+// 	);
+// 	$expected = '<option_a><name>OptA</name><id>12</id><opt>OptA 1</opt><opt>OptA 2</opt><opt>OptA 3</opt><opt>OptA 4</opt><opt>OptA 5</opt><opt>OptA 6</opt></option_a><option_b><name>OptB</name><id>12</id><opt>OptB 1</opt><opt>OptB 2</opt><opt>OptB 3</opt><opt>OptB 4</opt><opt>OptB 5</opt><opt>OptB 6</opt></option_b>';
+// 	$xml = new Xml($input, array('format' => 'tags'));
+// 	$result = $xml->toString(array('header' => false, 'cdata' => false));
+// 	$this->assertEqual($expected, $result);
+// }
 
-		$xml = new Xml("\n" . $raw);
-		$this->assertEqual($xml->toArray(), $array);
-		$this->assertEqual($xml->__header, 'xml version="1.0" encoding="ISO-8859-1"');
-	}
+// function testMixedArrayAttributes() {
+// 	$input = array('OptionGroup' => array(
+// 		array(
+// 			'name' => 'OptA',
+// 			'id' => 12,
+// 			array('opt' => 'OptA 1'),
+// 			array('opt' => 'OptA 2'),
+// 			array('opt' => 'OptA 3'),
+// 			array('opt' => 'OptA 4'),
+// 			array('opt' => 'OptA 5'),
+// 			array('opt' => 'OptA 6')
+// 		),
+// 		array(
+// 			'name' => 'OptB',
+// 			'id' => 12,
+// 			array('opt' => 'OptB 1'),
+// 			array('opt' => 'OptB 2'),
+// 			array('opt' => 'OptB 3'),
+// 			array('opt' => 'OptB 4'),
+// 			array('opt' => 'OptB 5'),
+// 			array('opt' => 'OptB 6')
+// 		)
+// 	));
+// 	$expected = '<option_group name="OptA" id="12"><opt>OptA 1</opt><opt>OptA 2</opt><opt>OptA 3</opt><opt>OptA 4</opt><opt>OptA 5</opt><opt>OptA 6</opt></option_group><option_group name="OptB" id="12"><opt>OptB 1</opt><opt>OptB 2</opt><opt>OptB 3</opt><opt>OptB 4</opt><opt>OptB 5</opt><opt>OptB 6</opt></option_group>';
+//
+// 	$options = array('tags' => array('option_group' => array('attributes' => array('id', 'name'))));
+// 	$xml = new Xml($input, $options);
+// 	$result = $xml->toString(false);
+//
+// 	$this->assertEqual($expected, $result);
+// }
 
-	/* Not implemented yet */
-	/* function testChildFilter() {
-	 	$input = array(
-	 		array(
-	 			'Project' => array('id' => 1, 'title' => null, 'client_id' => 1, 'show' => 1, 'is_spotlight' => null, 'style_id' => 0, 'job_type_id' => 1, 'industry_id' => 1, 'modified' => null, 'created' => null),
-	 			'Style' => array('id' => null, 'name' => null),
-	 			'JobType' => array('id' => 1, 'name' => 'Touch Screen Kiosk'),
-	 			'Industry' => array('id' => 1, 'name' => 'Financial'),
-	 			'BusinessSolution' => array(array('id' => 6, 'name' => 'Convert Sales')),
-	 			'MediaType' => array(
-	 				array('id' => 15, 'name' => 'Print'),
-	 				array('id' => 7, 'name' => 'Web Demo'),
-	 				array('id' => 6, 'name' => 'CD-ROM')
-	 			)
-	 		),
-	 		array(
-	 			'Project' => array('id' => 2, 'title' => null, 'client_id' => 2, 'show' => 1, 'is_spotlight' => null, 'style_id' => 0, 'job_type_id' => 2, 'industry_id' => 2, 'modified' => '2007-11-26 14:48:36', 'created' => null),
-	 			'Style' => array('id' => null, 'name' => null),
-	 			'JobType' => array('id' => 2, 'name' => 'Awareness Campaign'),
-	 			'Industry' => array('id' => 2, 'name' => 'Education'),
-	 			'BusinessSolution' => array(
-	 				array('id' => 4, 'name' => 'Build Relationship'),
-	 				array('id' => 6, 'name' => 'Convert Sales')
-	 			),
-	 			'MediaType' => array(
-	 				array('id' => 17, 'name' => 'Web'),
-	 				array('id' => 6, 'name' => 'CD-ROM')
-	 			)
-	 		)
-	 	);
-
-	 	$xml = new Xml($input, array('format' => 'tags', 'tags' => array(
-	 		'MediaType'	=> array('value' => 'id', 'children' => false),
-	 		'JobType'	=> array('children' => array()),
-	 		'Industry'	=> array('children' => array('name')),
-	 		'show'		=> false
-	 	)));
-
-	 	$result = $xml->toString(array('header' => false, 'cdata' => false));
-	 	$expected = '<project><id>1</id><title /><client_id>1</client_id><is_spotlight /><style_id>0</style_id><job_type_id>1</job_type_id><industry_id>1</industry_id><modified /><created /><style><id /><name /></style><job_type><id>1</id><name>Touch Screen Kiosk</name></job_type><industry><name>Financial</name></industry><business_solution><id>6</id><name>Convert Sales</name></business_solution><media_type>15</media_type><media_type>7</media_type><media_type>6</media_type></project><project><id>2</id><title /><client_id>2</client_id><is_spotlight /><style_id>0</style_id><job_type_id>2</job_type_id><industry_id>2</industry_id><modified>2007-11-26 14:48:36</modified><created /><style><id /><name /></style><job_type><id>2</id><name>Awareness Campaign</name></job_type><industry><name>Education</name></industry><business_solution><id>4</id><name>Build Relationship</name></business_solution><business_solution><id>6</id><name>Convert Sales</name></business_solution><media_type>17</media_type><media_type>6</media_type></project>';
-	 	$this->assertEqual($expected, $result);
-	} */
-
-	/* Broken due to a Set class issue */
-	/* function testMixedArray() {
-	 	$input = array('OptionGroup' => array(
-	 		array('name' => 'OptA', 'id' => 12, 'OptA 1', 'OptA 2', 'OptA 3', 'OptA 4', 'OptA 5', 'OptA 6'),
-	 		array('name' => 'OptB', 'id' => 12, 'OptB 1', 'OptB 2', 'OptB 3', 'OptB 4', 'OptB 5', 'OptB 6')
-	 	));
-	 	$expected = '<option_group><name>OptA</name><id>12</id><option_group>OptA 1</option_group><option_group>OptA 2</option_group><option_group>OptA 3</option_group><option_group>OptA 4</option_group><option_group>OptA 5</option_group><option_group>OptA 6</option_group></option_group><option_group><name>OptB</name><id>12</id><option_group>OptB 1</option_group><option_group>OptB 2</option_group><option_group>OptB 3</option_group><option_group>OptB 4</option_group><option_group>OptB 5</option_group><option_group>OptB 6</option_group></option_group>';
-	 	$xml = new Xml($input, array('format' => 'tags'));
-	 	$result = $xml->toString(array('header' => false, 'cdata' => false));
-	 	$this->assertEqual($expected, $result);
-	} */
-
-	/* function testMixedNestedArray() {
-	 	$input = array(
-	 		'OptionA' =>  array(
-	 			'name' => 'OptA',
-	 			'id' => 12,
-	 			'opt' => array('OptA 1', 'OptA 2', 'OptA 3', 'OptA 4', 'OptA 5', 'OptA 6')
-	 		),
-	 		'OptionB' 	=> array(
-	 			'name' => 'OptB',
-	 			'id' => 12,
-	 			'opt' => array('OptB 1', 'OptB 2', 'OptB 3', 'OptB 4', 'OptB 5', 'OptB 6')
-	 		)
-	 	);
-	 	$expected = '<option_a><name>OptA</name><id>12</id><opt>OptA 1</opt><opt>OptA 2</opt><opt>OptA 3</opt><opt>OptA 4</opt><opt>OptA 5</opt><opt>OptA 6</opt></option_a><option_b><name>OptB</name><id>12</id><opt>OptB 1</opt><opt>OptB 2</opt><opt>OptB 3</opt><opt>OptB 4</opt><opt>OptB 5</opt><opt>OptB 6</opt></option_b>';
-	 	$xml = new Xml($input, array('format' => 'tags'));
-	 	$result = $xml->toString(array('header' => false, 'cdata' => false));
-	 	$this->assertEqual($expected, $result);
-	} */
-
-	/* function testMixedArrayAttributes() {
-	 	$input = array('OptionGroup' => array(
-	 		array(
-	 			'name' => 'OptA',
-	 			'id' => 12,
-	 			array('opt' => 'OptA 1'),
-	 			array('opt' => 'OptA 2'),
-	 			array('opt' => 'OptA 3'),
-	 			array('opt' => 'OptA 4'),
-	 			array('opt' => 'OptA 5'),
-	 			array('opt' => 'OptA 6')
-	 		),
-	 		array(
-	 			'name' => 'OptB',
-	 			'id' => 12,
-	 			array('opt' => 'OptB 1'),
-	 			array('opt' => 'OptB 2'),
-	 			array('opt' => 'OptB 3'),
-	 			array('opt' => 'OptB 4'),
-	 			array('opt' => 'OptB 5'),
-	 			array('opt' => 'OptB 6')
-	 		)
-	 	));
-	 	$expected = '<option_group name="OptA" id="12"><opt>OptA 1</opt><opt>OptA 2</opt><opt>OptA 3</opt><opt>OptA 4</opt><opt>OptA 5</opt><opt>OptA 6</opt></option_group><option_group name="OptB" id="12"><opt>OptB 1</opt><opt>OptB 2</opt><opt>OptB 3</opt><opt>OptB 4</opt><opt>OptB 5</opt><opt>OptB 6</opt></option_group>';
-
-	 	$options = array('tags' => array('option_group' => array('attributes' => array('id', 'name'))));
-	 	$xml = new Xml($input, $options);
-	 	$result = $xml->toString(false);
-
-	 	$this->assertEqual($expected, $result);
-	} */
-
-	 /* Not implemented yet */
-	 /* function testTagMap() {
-	 	$input = array(
-	 		array(
-	 			'Project' => array('id' => 1, 'title' => null, 'show' => 1, 'is_spotlight' => null, 'style_id' => 0, 'job_type_id' => 1, 'industry_id' => 1, 'modified' => null, 'created' => null),
-	 			'Style' => array('id' => null, 'name' => null),
-	 			'JobType' => array('id' => 1, 'name' => 'Touch Screen Kiosk'),
-	 			'Industry' => array('id' => 1, 'name' => 'Financial')
-	 		),
-	 		array(
-	 			'Project' => array('id' => 2, 'title' => null, 'show' => 1, 'is_spotlight' => null, 'style_id' => 0, 'job_type_id' => 2, 'industry_id' => 2, 'modified' => '2007-11-26 14:48:36', 'created' => null),
-	 			'Style' => array('id' => null, 'name' => null),
-	 			'JobType' => array('id' => 2, 'name' => 'Awareness Campaign'),
-	 			'Industry' => array('id' => 2, 'name' => 'Education'),
-	 		)
-	 	);
-	 	$expected = '<project id="1"><title /><show>1</show><is_spotlight /><style_id>0</style_id><job_type_id>1</job_type_id><industry_id>1</industry_id><modified /><created /><style id=""><name /></style><jobtype id="1">Touch Screen Kiosk</jobtype><industry id="1"><name>Financial</name></industry></project><project id="2"><title /><show>1</show><is_spotlight /><style_id>0</style_id><job_type_id>2</job_type_id><industry_id>2</industry_id><modified>2007-11-26 14:48:36</modified><created /><style id=""><name /></style><jobtype id="2">Awareness Campaign</jobtype><industry id="2"><name>Education</name></industry></project>';
-
-	 	$xml = new Xml($input, array('tags' => array(
-	 		'Project'	=> array('attributes' => array('id')),
-	 		'style'		=> array('attributes' => array('id')),
-	 		'JobType'	=> array('name' => 'jobtype', 'attributes' => array('id'), 'value' => 'name'),
-	 		'Industry'	=> array('attributes' => array('id'))
-	 	)));
-	 	$result = $xml->toString(array('header' => false, 'cdata' => false));
-	 	$this->assertEqual($expected, $result);
-	} */
+/*
+	 * Not implemented yet
+	 */
+// function testTagMap() {
+// 	$input = array(
+// 		array(
+// 			'Project' => array('id' => 1, 'title' => null, 'show' => 1, 'is_spotlight' => null, 'style_id' => 0, 'job_type_id' => 1, 'industry_id' => 1, 'modified' => null, 'created' => null),
+// 			'Style' => array('id' => null, 'name' => null),
+// 			'JobType' => array('id' => 1, 'name' => 'Touch Screen Kiosk'),
+// 			'Industry' => array('id' => 1, 'name' => 'Financial')
+// 		),
+// 		array(
+// 			'Project' => array('id' => 2, 'title' => null, 'show' => 1, 'is_spotlight' => null, 'style_id' => 0, 'job_type_id' => 2, 'industry_id' => 2, 'modified' => '2007-11-26 14:48:36', 'created' => null),
+// 			'Style' => array('id' => null, 'name' => null),
+// 			'JobType' => array('id' => 2, 'name' => 'Awareness Campaign'),
+// 			'Industry' => array('id' => 2, 'name' => 'Education'),
+// 		)
+// 	);
+// 	$expected = '<project id="1"><title /><show>1</show><is_spotlight /><style_id>0</style_id><job_type_id>1</job_type_id><industry_id>1</industry_id><modified /><created /><style id=""><name /></style><jobtype id="1">Touch Screen Kiosk</jobtype><industry id="1"><name>Financial</name></industry></project><project id="2"><title /><show>1</show><is_spotlight /><style_id>0</style_id><job_type_id>2</job_type_id><industry_id>2</industry_id><modified>2007-11-26 14:48:36</modified><created /><style id=""><name /></style><jobtype id="2">Awareness Campaign</jobtype><industry id="2"><name>Education</name></industry></project>';
+//
+// 	$xml = new Xml($input, array('tags' => array(
+// 		'Project'	=> array('attributes' => array('id')),
+// 		'style'		=> array('attributes' => array('id')),
+// 		'JobType'	=> array('name' => 'jobtype', 'attributes' => array('id'), 'value' => 'name'),
+// 		'Industry'	=> array('attributes' => array('id'))
+// 	)));
+// 	$result = $xml->toString(array('header' => false, 'cdata' => false));
+// 	$this->assertEqual($expected, $result);
+// }
 /**
  * testAllCData method
  *
@@ -572,15 +518,18 @@ class XmlTest extends CakeTestCase {
 		$result = $xml->toString(array('header' => false, 'cdata' => true));
 		$this->assertEqual($expected, $result);
 	}
-	/* PHP-native Unicode support pending */
-	/* function testConvertEntities() {
-	 	$input = array('project' => '&eacute;c&icirc;t');
-	 	$xml = new Xml($input);
 
-	 	$result = $xml->toString(array('header' => false, 'cdata' => false, 'convertEntities' => true));
-	 	$expected = '<project>&#233;c&#238;t</project>';
-	 	$this->assertEqual($result, $expected);
-	} */
+/*
+	 * PHP-native Unicode support pending
+	 */
+// function testConvertEntities() {
+// 	$input = array('project' => '&eacute;c&icirc;t');
+// 	$xml = new Xml($input);
+//
+// 	$result = $xml->toString(array('header' => false, 'cdata' => false, 'convertEntities' => true));
+// 	$expected = '<project>&#233;c&#238;t</project>';
+// 	$this->assertEqual($result, $expected);
+// }
 /**
  * testWhitespace method
  *
@@ -1011,13 +960,10 @@ class XmlTest extends CakeTestCase {
 		));
 
 		$this->assertEqual($result, $expected);
+
 	}
-/**
- * testAppend method
- *
- * @access public
- * @return void
- */
+
+
 	function testAppend() {
 		$parentNode = new XmlNode('ourParentNode');
 		$parentNode->append( new XmlNode('ourChildNode'));
@@ -1033,12 +979,8 @@ class XmlTest extends CakeTestCase {
 		$this->expectError();
 		$parentNode->append($parentNode);
 	}
-/**
- * testNamespacing method
- *
- * @access public
- * @return void
- */
+
+
 	function testNamespacing() {
 		$node = new Xml('<xml></xml>');
 		$node->addNamespace('cake', 'http://cakephp.org');
@@ -1054,51 +996,6 @@ class XmlTest extends CakeTestCase {
 
 		$node->addNamespace('cake', 'http://cakephp.org');
 		$this->assertEqual($node->toString(), '<xml xmlns:cake="http://cakephp.org" />');
-	}
-/**
- * testCamelize method
- *
- * @access public
- * @return void
- */
-	function testCamelize() {
-		$xmlString = '<methodCall><methodName>examples.getStateName</methodName>' .
-			'<params><param><value><i4>41</i4></value></param></params></methodCall>';
-
-		$Xml = new Xml($xmlString);
-		$expected = array(
-			'methodCall' => array(
-				'methodName' => 'examples.getStateName',
-					'params' => array(
-						'param' => array('value' => array('i4' => 41)))));
-		$this->assertEqual($expected, $Xml->toArray(false));
-
-		$Xml = new Xml($xmlString);
-		$expected = array(
-			'MethodCall' => array(
-				'methodName' => 'examples.getStateName',
-					'Params' => array(
-						'Param' => array('Value' => array('i4' => 41)))));
-		$this->assertEqual($expected, $Xml->toArray());
-	}
-/**
- * testNumericDataHandling method
- *
- * @access public
- * @return void
- */
-	function testNumericDataHandling() {
-		$data = '<xml><data>012345</data></xml>';
-
-		$node = new Xml();
-		$node->load($data);
-		$node->parse();
-
-		$result = $node->first();
-		$result = $result->children("data");
-
-		$result = $result[0]->first();
-		$this->assertEqual($result->value, '012345');
 	}
 }
 ?>

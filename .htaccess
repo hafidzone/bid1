@@ -3,3 +3,22 @@
    RewriteRule    ^$ app/webroot/    [L]
    RewriteRule    (.*) app/webroot/$1 [L]
 </IfModule>
+
+# disable directory browsing -IMPORTANT, do NOT remove.
+Options -Indexes
+
+# protect the htaccess file
+<files .htaccess>
+order allow,deny
+deny from all
+</files>
+
+# disable the server signature
+ServerSignature Off
+
+
+# protect php.ini
+<files *.ini>
+order allow,deny
+deny from all
+</files>

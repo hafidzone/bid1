@@ -1,35 +1,38 @@
 <?php
-/* SVN FILE: $Id$ */
+/* SVN FILE: $Id: file.test.php 7690 2008-10-02 04:56:53Z nate $ */
 /**
- * FileTest file
+ * Short description for file.
  *
  * Long description for file
  *
  * PHP versions 4 and 5
  *
  * CakePHP(tm) Tests <https://trac.cakephp.org/wiki/Developement/TestSuite>
- * Copyright 2005-2008, Cake Software Foundation, Inc. (http://www.cakefoundation.org)
+ * Copyright 2005-2008, Cake Software Foundation, Inc.
+ *								1785 E. Sahara Avenue, Suite 490-204
+ *								Las Vegas, Nevada 89104
  *
  *  Licensed under The Open Group Test Suite License
  *  Redistributions of files must retain the above copyright notice.
  *
  * @filesource
- * @copyright     Copyright 2005-2008, Cake Software Foundation, Inc. (http://www.cakefoundation.org)
- * @link          https://trac.cakephp.org/wiki/Developement/TestSuite CakePHP(tm) Tests
- * @package       cake
- * @subpackage    cake.tests.cases.libs
- * @since         CakePHP(tm) v 1.2.0.4206
- * @version       $Revision$
- * @modifiedby    $LastChangedBy$
- * @lastmodified  $Date$
- * @license       http://www.opensource.org/licenses/opengroup.php The Open Group Test Suite License
+ * @copyright		Copyright 2005-2008, Cake Software Foundation, Inc.
+ * @link				https://trac.cakephp.org/wiki/Developement/TestSuite CakePHP(tm) Tests
+ * @package			cake.tests
+ * @subpackage		cake.tests.cases.libs
+ * @since			CakePHP(tm) v 1.2.0.4206
+ * @version			$Revision: 7690 $
+ * @modifiedby		$LastChangedBy: nate $
+ * @lastmodified	$Date: 2008-10-02 00:56:53 -0400 (Thu, 02 Oct 2008) $
+ * @license			http://www.opensource.org/licenses/opengroup.php The Open Group Test Suite License
  */
 App::import('Core', 'File');
+
 /**
- * FileTest class
+ * Short description for class.
  *
- * @package       cake
- * @subpackage    cake.tests.cases.libs
+ * @package		cake.tests
+ * @subpackage	cake.tests.cases.libs
  */
 class FileTest extends CakeTestCase {
 /**
@@ -58,10 +61,7 @@ class FileTest extends CakeTestCase {
 		$this->assertEqual($result, $expecting);
 
 		$result = $this->File->info();
-		$expecting = array(
-			'dirname' => dirname(__FILE__), 'basename' => basename(__FILE__),
-			'extension' => 'php', 'filename' =>'file.test'
-		);
+		$expecting = array('dirname'=> dirname(__FILE__), 'basename'=> basename(__FILE__), 'extension'=> 'php', 'filename'=>'file.test');
 		$this->assertEqual($result, $expecting);
 
 		$result = $this->File->ext();
@@ -92,13 +92,13 @@ class FileTest extends CakeTestCase {
 		$expecting = filegroup($file);
 		$this->assertEqual($result, $expecting);
 
-		$result = $this->File->Folder();
-		$this->assertIsA($result, 'Folder');
-
-		$this->skipIf(DIRECTORY_SEPARATOR === '\\', '%s File permissions tests not supported on Windows');
 		$result = $this->File->perms();
 		$expecting = '0644';
 		$this->assertEqual($result, $expecting);
+
+		$result = $this->File->Folder();
+		$this->assertIsA($result, 'Folder');
+
 	}
 /**
  * testRead method
@@ -111,12 +111,6 @@ class FileTest extends CakeTestCase {
 		$expecting = file_get_contents(__FILE__);
 		$this->assertEqual($result, $expecting);
 		$this->assertTrue(!is_resource($this->File->handle));
-
-		$this->File->lock = true;
-		$result = $this->File->read();
-		$expecting = file_get_contents(__FILE__);
-		$this->assertEqual($result, $expecting);
-		$this->File->lock = null;
 
 		$data = $expecting;
 		$expecting = substr($data, 0, 3);
@@ -233,16 +227,10 @@ class FileTest extends CakeTestCase {
  */
 	function testPrepare() {
 		$string = "some\nvery\ncool\r\nteststring here\n\n\nfor\r\r\n\n\r\n\nhere";
-		if (DS == '\\') {
-			$expected = "some\r\nvery\r\ncool\r\nteststring here\r\n\r\n\r\n";
-			$expected .= "for\r\n\r\n\r\n\r\n\r\nhere";
-		} else {
-			$expected = "some\nvery\ncool\nteststring here\n\n\nfor\n\n\n\n\nhere";
-		}
+		$expected = "some\nvery\ncool\nteststring here\n\n\nfor\n\n\n\n\nhere";
 		$this->assertIdentical(File::prepare($string), $expected);
 
-		$expected = "some\r\nvery\r\ncool\r\nteststring here\r\n\r\n\r\n";
-		$expected .= "for\r\n\r\n\r\n\r\n\r\nhere";
+		$expected = "some\r\nvery\r\ncool\r\nteststring here\r\n\r\n\r\nfor\r\n\r\n\r\n\r\n\r\nhere";
 		$this->assertIdentical(File::prepare($string, true), $expected);
 	}
 /**
@@ -419,8 +407,7 @@ class FileTest extends CakeTestCase {
 			$assertLine = $assertLine->traceMethod();
 			$shortPath = substr($tmpFile, strlen(ROOT));
 
-			$message = '[FileTest] Skipping %s because "%s" not writeable!';
-			$message = sprintf(__($message, true), $caller, $shortPath).$assertLine;
+			$message = sprintf(__('[FileTest] Skipping %s because "%s" not writeable!', true), $caller, $shortPath).$assertLine;
 			$this->_reporter->paintSkip($message);
 		}
 		return false;
